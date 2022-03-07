@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerMarkupsPlaceWidget</class>
+ <widget class="qSlicerWidget" name="qSlicerMarkupsPlaceWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>449</width>
+    <height>46</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Place markups</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton,
+QToolButton{
+	font: 10pt 'Microsoft YaHei';
+	min-width: 28;
+ 	min-height: 21;
+	max-width: 28;
+ 	max-height: 21;
+	background: #191925;
+ 	border: 1px solid #5c5c74;
+}
+
+QPushButton:hover,
+QToolButton:hover{
+	background-color: #5C5C74;
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="ctkColorPickerButton" name="ColorButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Select the display color.</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="displayColorName" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="PlaceButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Place a markup point</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+         <normaloff>:/Icons/Icons/MarkupsMouseModePlaceSg1.png</normaloff>:/Icons/Icons/MarkupsMouseModePlaceSg1.png</iconset>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="DeleteButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Delete last added markup point</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+         <normaloff>:/Icons/Icons/DeleteSg1.png</normaloff>:/Icons/Icons/DeleteSg1.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="MoreButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../../../../Libs/MRML/Widgets/Resources/qMRMLWidgets.qrc">
+         <normaloff>:/Icons/SliceMoreOptions.png</normaloff>:/Icons/SliceMoreOptions.png</iconset>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::InstantPopup</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+  </layout>
+  <action name="ActionPersistent">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Place multiple markups</string>
+   </property>
+   <property name="toolTip">
+    <string>Place multiple markups</string>
+   </property>
+  </action>
+  <action name="ActionDeleteAll">
+   <property name="icon">
+    <iconset resource="../../../Resources/qSlicerMarkupsModule.qrc">
+     <normaloff>:/Icons/MarkupsDeleteAllRows.png</normaloff>:/Icons/MarkupsDeleteAllRows.png</iconset>
+   </property>
+   <property name="text">
+    <string>Delete all markups</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete all markups in the list</string>
+   </property>
+  </action>
+  <action name="ActionVisibility">
+   <property name="icon">
+    <iconset resource="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+     <normaloff>:/Icons/Small/SlicerInvisible.png</normaloff>
+     <normalon>:/Icons/Small/SlicerVisible.png</normalon>:/Icons/Small/SlicerInvisible.png</iconset>
+   </property>
+   <property name="text">
+    <string>Visibility</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle markups visibility</string>
+   </property>
+  </action>
+  <action name="ActionLocked">
+   <property name="icon">
+    <iconset resource="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+     <normaloff>:/Icons/Small/SlicerUnlock.png</normaloff>
+     <normalon>:/Icons/Small/SlicerLock.png</normalon>:/Icons/Small/SlicerUnlock.png</iconset>
+   </property>
+   <property name="text">
+    <string>Locked</string>
+   </property>
+   <property name="toolTip">
+    <string>Toggle markup point positions lock</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkColorPickerButton</class>
+   <extends>QPushButton</extends>
+   <header>ctkColorPickerButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../../../../Libs/MRML/Widgets/Resources/qMRMLWidgets.qrc"/>
+  <include location="../../../Resources/qSlicerMarkupsModule.qrc"/>
+  <include location="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc"/>
+ </resources>
+ <connections/>
+</ui>

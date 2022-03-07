@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/LoadTransform.png</file>
+        <file>Icons/Transforms.png</file>
+        <file>Icons/RotateFirst.png</file>
+        <file>Icons/TranslateFirst.png</file>
+        <file>Icons/deleteTF.png</file>
+        <file>Icons/editTF.png</file>
+        <file>Icons/leftIcon.png</file>
+        <file>Icons/rightIcon.png</file>
+    </qresource>
+</RCC>

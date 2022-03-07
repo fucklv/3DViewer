@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerVolumesModuleWidget</class>
+ <widget class="qSlicerWidget" name="qSlicerVolumesModuleWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>462</width>
+    <height>722</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Volumes</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/Icons/Volumes.png</normaloff>:/Icons/Volumes.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QComboBox {
+	color: rgb(255, 255, 255);
+    background: #191925;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	height: 21px;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;     
+    color: rgb(255, 255, 255);
+    background-color: rgb(60, 60, 90);   
+    selection-background-color: rgb(105, 135, 213);  
+}
+
+QComboBox QAbstractItemView::item:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox QAbstractItemView::item:selected {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox:hover{
+	background-color: rgb(105, 135, 213);
+}
+
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+    subcontrol-position: top right;
+    /*width: 20px;*/
+ 	
+    /*border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;*/ /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+	image: url(:/Icons/comboBoxDown1.png);
+}
+
+QSpinBox {
+	/* 为箭头保留空间 */
+	/*padding-right:20px;*/
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	min-height:21px;
+	max-height:21px;
+}
+
+/* 向上按钮 */
+QSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+
+QDoubleSpinBox {
+	/* 为箭头保留空间 */
+	padding-right:20px;
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+}
+
+/* 向上按钮 */
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QDoubleSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QDoubleSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QDoubleSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QDoubleSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+QRadioButton {
+    spacing: 5px;
+    font: 10pt &quot;Microsoft YaHei&quot;;
+}
+ 
+QRadioButton::indicator {  
+    width: 16px;
+    height: 16px;
+}
+ 
+QRadioButton::indicator:checked {  
+	image: url(:/Icons/RadioButtonSg1.png);
+}
+ 
+QRadioButton::indicator:unchecked {  
+    image: url(:/Icons/RadioButtonSg.png);
+}
+
+QTableView
+{
+    alternate-background-color:#e3edf9;
+    gridline-color: #5c5c74;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	selection-background-color: #6987d5;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+ 
+QHeaderView::section
+{
+    background: #191925;
+	border: 1px solid #5c5c74;
+	background-color:transparent
+}
+
+/***********************************************************/
+QSlider::groove:horizontal {
+	border: 1px solid #41507D;
+	background: #41507D;
+	height:	2px;
+	margin: 0px 0;
+	left: 5px; right: 5px;
+}
+
+QSlider::handle:horizontal {
+	border: 0px ;
+	width: 10px;
+	margin: -7px -7px -7px -7px;
+	background: #e6edff;
+}
+
+QSlider::add-page:horizontal{
+	background: #41507d;
+	min-height: 2px;
+	max-height: 2px;
+
+}
+
+QSlider::sub-page:horizontal{
+	background: #6987d5;
+	min-height: 2px;
+	max-height: 2px; 
+}
+/**************************************************************/
+
+QCheckBox {
+    spacing: 7px;/*复选框文本与勾选框的距离*/
+}
+
+QCheckBox::indicator {
+    width: 16px;/*勾选框的大小*/
+    height: 16px;
+}
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:unchecked {
+    image: url(:/Icons/CheckBoxImage1.png);
+}
+
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/Icons/CheckBoxImage.png);
+}
+
+QPushButton#ConvertVolumeButton{
+	height: 24px;
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QPushButton#ConvertVolumeButton:hover {
+	background-color: #5C5C74;
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>4</number>
+   </property>
+   <property name="topMargin">
+    <number>4</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <item row="2" column="0">
+    <widget class="QWidget" name="InfoCollapsibleButton" native="true">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}</string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Volume Information</string>
+     </property>
+     <property name="checked" stdset="0">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="qMRMLVolumeInfoWidget" name="MRMLVolumeInfoWidget" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="ConvertVolumeFrame">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="ConvertVolumeLabel">
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>Convert to LabelMap:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>32</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="qMRMLNodeComboBox" name="ConvertVolumeTargetSelector" native="true">
+           <property name="nodeTypes" stdset="0">
+            <stringlist>
+             <string>vtkMRMLLabelMapVolumeNode</string>
+            </stringlist>
+           </property>
+           <property name="noneEnabled" stdset="0">
+            <bool>true</bool>
+           </property>
+           <property name="renameEnabled" stdset="0">
+            <bool>true</bool>
+           </property>
+           <property name="noneDisplay" stdset="0">
+            <string>Replace current node</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ConvertVolumeButton">
+           <property name="text">
+            <string>Convert</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QWidget" name="DisplayCollapsibleButton" native="true">
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}</string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Display</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="qSlicerVolumeDisplayWidget" name="VolumeDisplayWidget" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <property name="leftMargin">
+      <number>4</number>
+     </property>
+     <property name="topMargin">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="VolumesLabel">
+       <property name="minimumSize">
+        <size>
+         <width>17</width>
+         <height>17</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>17</width>
+         <height>17</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	width: 17;
+	height: 17;
+	border-image: url(:/Icons/Icons/volumes.png);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="VolumesText">
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	font: 16pt &quot;Microsoft YaHei&quot;;
+}</string>
+       </property>
+       <property name="text">
+        <string>VolumeIngormation</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="rightMargin">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="ActiveVolumeLabel">
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}</string>
+       </property>
+       <property name="text">
+        <string> Active Volume</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="qMRMLNodeComboBox" name="ActiveVolumeNodeSelector" native="true">
+       <property name="nodeTypes" stdset="0">
+        <stringlist>
+         <string>vtkMRMLVolumeNode</string>
+        </stringlist>
+       </property>
+       <property name="addEnabled" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="renameEnabled" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>208</width>
+       <height>15</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerVolumeDisplayWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerVolumeDisplayWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLVolumeInfoWidget</class>
+   <extends>qMRMLWidget</extends>
+   <header>qMRMLVolumeInfoWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../qSlicerVolumesModule.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>qSlicerVolumesModuleWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>MRMLVolumeInfoWidget</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>118</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>118</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>qSlicerVolumesModuleWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>ActiveVolumeNodeSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>230</x>
+     <y>19</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>qSlicerVolumesModuleWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>ConvertVolumeTargetSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>97</x>
+     <y>568</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>179</x>
+     <y>499</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

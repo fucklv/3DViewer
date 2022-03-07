@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/CursorBaseArrow.png</file>
+        <file>Icons/NullEffect.png</file>
+        <file>Icons/Erase.png</file>
+        <file>Icons/Paint.png</file>
+        <file>Icons/Rectangle.png</file>
+        <file>Icons/ChangeIcon.png</file>
+    </qresource>
+</RCC>

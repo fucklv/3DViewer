@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SegmentEditorWrapSolidify</class>
+ <widget class="qMRMLWidget" name="SegmentEditorWrapSolidify">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>336</width>
+    <height>589</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton{
+	font: 10pt 'Microsoft YaHei';
+	width: 68;
+ 	height: 24;
+	background: #191925;
+ 	border: 1px solid #5c5c74;
+}
+
+QPushButton:hover{
+	background-color: #5C5C74;
+}</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="verticalSpacing">
+    <number>12</number>
+   </property>
+   <item row="9" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="applyButton">
+       <property name="text">
+        <string>应用</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="8" column="0" colspan="2">
+    <widget class="ctkCollapsibleGroupBox" name="advancedSettingsFrame">
+     <property name="minimumSize">
+      <size>
+       <width>143</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;;</string>
+     </property>
+     <property name="title">
+      <string>高级选项：</string>
+     </property>
+     <property name="collapsed" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="collapsedHeight" stdset="0">
+      <number>6</number>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="horizontalSpacing">
+       <number>9</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>12</number>
+      </property>
+      <item row="0" column="1" colspan="2">
+       <widget class="qMRMLSliderWidget" name="smoothingFactorSlider" native="true">
+        <property name="toolTip">
+         <string>Smoothing Factor used for operation, as the a surface representation of the segmentation will be used for this algorithm.</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QDoubleSpinBox {
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	min-height:21px;
+	max-height:21px;
+	min-width: 82px;
+	max-width: 82px;
+	color: rgb(255, 255, 255);
+}</string>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.050000000000000</double>
+        </property>
+        <property name="pageStep" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>0.300000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2">
+       <widget class="ctkSliderWidget" name="remeshOversamplingSlider" native="true">
+        <property name="toolTip">
+         <string>Thickness of the output shell. If the value is very small then it may significantly increase the computation time and may appear fractured if output is segmentation.</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QDoubleSpinBox {
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	min-height:21px;
+	max-height:21px;
+	min-width: 82px;
+	max-width: 82px;
+	color: rgb(255, 255, 255);
+}</string>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="pageStep" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="minimum" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>5.000000000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="suffix" stdset="0">
+         <string>x</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Save intermediate results:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="2">
+       <widget class="QFrame" name="frame">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QCheckBox" name="saveIntermediateResultsCheckBox">
+        <property name="toolTip">
+         <string>Save intermediate results as models. Useful for diagnostics of the solidification process.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2">
+       <widget class="ctkSliderWidget" name="iterationsSlider" native="true">
+        <property name="toolTip">
+         <string>Increase this value if output seems not completely converged to input. Increases computation time.</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QDoubleSpinBox {
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	min-height:21px;
+	max-height:21px;
+	min-width: 82px;
+	max-width: 82px;
+	color: rgb(255, 255, 255);
+}</string>
+        </property>
+        <property name="decimals" stdset="0">
+         <number>0</number>
+        </property>
+        <property name="pageStep" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="minimum" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>20.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Smoothing factor:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_14">
+        <property name="text">
+         <string>Oversampling:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Number of iterations:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QFrame" name="frame_2">
+     <layout class="QGridLayout" name="gridLayout_6">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>9</number>
+      </property>
+      <item row="2" column="1">
+       <widget class="qMRMLNodeComboBox" name="outputModelNodeSelector" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="nodeTypes" stdset="0">
+         <stringlist>
+          <string>vtkMRMLModelNode</string>
+         </stringlist>
+        </property>
+        <property name="baseName" stdset="0">
+         <string>Model</string>
+        </property>
+        <property name="noneEnabled" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="renameEnabled" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="noneDisplay" stdset="0">
+         <string>Create new Model</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="outputNewSegmentRadioButton">
+        <property name="text">
+         <string>New segment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="outputSegmentRadioButton">
+        <property name="text">
+         <string>Overwrite segment</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="outputModelRadioButton">
+        <property name="text">
+         <string>Model:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QLabel" name="label_13">
+     <property name="text">
+      <string>输出：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="label_11">
+     <property name="text">
+      <string>创建外壳：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QFrame" name="frame_5">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>12</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QFrame" name="frame_3">
+     <layout class="QGridLayout" name="gridLayout_7">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="horizontalSpacing">
+       <number>9</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>12</number>
+      </property>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="regionSegmentRadioButton">
+        <property name="text">
+         <string>Custom:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="regionLargestCavityRadioButton">
+        <property name="text">
+         <string>Largest cavity</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="regionOuterSurfaceRadioButton">
+        <property name="text">
+         <string>Outer surface</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="qMRMLSliderWidget" name="carveHolesInOuterSurfaceDiameterSlider" native="true">
+        <property name="toolTip">
+         <string>Cavities with smaller diameter than this threshold will not be carved out.</string>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="minimum" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>100.000000000000000</double>
+        </property>
+        <property name="quantity" stdset="0">
+         <string>length</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="carveHolesInOuterSurfaceCheckBox">
+        <property name="toolTip">
+         <string>Propagate surface deeper into concave regions</string>
+        </property>
+        <property name="text">
+         <string>Carve holes:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="splitCavitiesCheckBox">
+        <property name="toolTip">
+         <string>Propagate surface deeper into concave regions</string>
+        </property>
+        <property name="text">
+         <string>Split cavities:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="qMRMLSliderWidget" name="splitCavitiesDiameterSlider" native="true">
+        <property name="toolTip">
+         <string>Cavities with smaller diameter than this threshold will not be carved out.</string>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="minimum" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>100.000000000000000</double>
+        </property>
+        <property name="quantity" stdset="0">
+         <string>length</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="3">
+       <widget class="qMRMLSegmentSelectorWidget" name="regionSegmentSelector" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="segmentationNodeSelectorVisible" stdset="0">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>范围：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="minimumSize">
+        <size>
+         <width>12</width>
+         <height>12</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>12</width>
+         <height>12</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	min-width: 12;
+	min-height: 12;
+	max-width: 12;
+	max-height: 12;
+	background-image: url(:/Icons/SegmentEditorEffectWrapSolidify.png);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string> Wrap Solidify</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QFrame" name="frame_4">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>12</number>
+      </property>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="shellOffsetInsideRadioButton">
+        <property name="text">
+         <string>inside    </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QCheckBox" name="createShellCheckBox">
+            <property name="toolTip">
+             <string>Hollow out the solidified object and keep only a thin outer shell.</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>厚度：</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="qMRMLSliderWidget" name="shellThicknessSlider" native="true">
+          <property name="toolTip">
+           <string>Thickness of the output shell. If value is positive then extracted surface is used as outer surface, otherwise it will be used as inner surface.  If the value is smaller than the segmentation's resolution then the result may appear fragmented and so a model output or larger shell thickness must be chosen. If surface cracks do not need to be preserved then shell can be created using &quot;Hollow&quot; segment editor effect.</string>
+          </property>
+          <property name="singleStep" stdset="0">
+           <double>0.100000000000000</double>
+          </property>
+          <property name="minimum" stdset="0">
+           <double>0.000000000000000</double>
+          </property>
+          <property name="maximum" stdset="0">
+           <double>20.000000000000000</double>
+          </property>
+          <property name="quantity" stdset="0">
+           <string>length</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>Preserve surface cracks:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QRadioButton" name="shellOffsetOutsideRadioButton">
+        <property name="text">
+         <string>outside</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>Offset direction:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QCheckBox" name="shellPreserveCracksCheckBox">
+        <property name="toolTip">
+         <string>Leaves gaps in the created shell where the original segment had surface cracks. Increase remesh oversampling if thin cracks are not preserved.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ctkCollapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>ctkCollapsibleGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkSliderWidget</class>
+   <extends>QWidget</extends>
+   <header>ctkSliderWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLSliderWidget</class>
+   <extends>ctkSliderWidget</extends>
+   <header>qMRMLSliderWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLSegmentSelectorWidget</class>
+   <extends>qMRMLWidget</extends>
+   <header>qMRMLSegmentSelectorWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>SegmentEditorWrapSolidify</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>regionSegmentSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>144</x>
+     <y>351</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>71</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SegmentEditorWrapSolidify</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>outputModelNodeSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>351</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>183</x>
+     <y>163</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SegmentEditorWrapSolidify</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>carveHolesInOuterSurfaceDiameterSlider</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>351</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>185</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SegmentEditorWrapSolidify</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>shellThicknessSlider</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>202</x>
+     <y>351</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>291</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SegmentEditorWrapSolidify</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>splitCavitiesDiameterSlider</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>249</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>262</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

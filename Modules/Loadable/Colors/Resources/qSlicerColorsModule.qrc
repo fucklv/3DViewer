@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/Colors.png</file>
+        <file>Icons/SlicerCopyColor.png</file>
+    </qresource>
+</RCC>

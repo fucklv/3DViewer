@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/ResetProperty.png</file>
+        <file>Icons/clear1.png</file>
+        <file>Icons/Search1.png</file>
+        <file>Icons/closeSg.png</file>
+        <file>Icons/dragSg.png</file>
+    </qresource>
+</RCC>

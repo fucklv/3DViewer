@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qMRMLMarkupsFiducialProjectionPropertyWidget</class>
+ <widget class="QWidget" name="qMRMLMarkupsFiducialProjectionPropertyWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>463</width>
+    <height>90</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>qMRMLMarkupsFiducialProjectionPropertyWidget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton#pointProjectionColorPickerButton{
+	background: #191925;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="verticalSpacing">
+    <number>9</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="point2DProjectionLabel">
+     <property name="toolTip">
+      <string>Turn on/off visualization of projected fiducial on 2D viewers</string>
+     </property>
+     <property name="text">
+      <string>可见度：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+     <item>
+      <widget class="ctkCheckBox" name="point2DProjectionCheckBox">
+       <property name="toolTip">
+        <string>Turn on/off visualization of projected fiducial on 2D viewers</string>
+       </property>
+       <property name="indicatorIconSize" stdset="0">
+        <size>
+         <width>23</width>
+         <height>23</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="projectionOpacityLabel">
+       <property name="text">
+        <string>透明度</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="ctkSliderWidget" name="projectionOpacitySliderWidget" native="true">
+       <property name="toolTip">
+        <string>The opacity of the projection.</string>
+       </property>
+       <property name="singleStep" stdset="0">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum" stdset="0">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="value" stdset="0">
+        <double>0.600000000000000</double>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="pointUseFiducialColorLabel">
+     <property name="toolTip">
+      <string>Use the same color as fiducial</string>
+     </property>
+     <property name="text">
+      <string>使用基准颜色：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="pointUseFiducialColorCheckBox">
+     <property name="toolTip">
+      <string>Use the same color as fiducial</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="pointProjectionColorLabel">
+     <property name="toolTip">
+      <string>Color of the projected fiducial on 2D viewers</string>
+     </property>
+     <property name="text">
+      <string>投射颜色：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="ctkColorPickerButton" name="pointProjectionColorPickerButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Color of the projected fiducial on 2D viewers. Only used if Use Fiducial Color is not checked, otherwise the projection uses the selected or unselected fiducial color.</string>
+       </property>
+       <property name="color" stdset="0">
+        <color>
+         <red>255</red>
+         <green>255</green>
+         <blue>255</blue>
+        </color>
+       </property>
+       <property name="displayColorName" stdset="0">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="pointOutlinedBehindSlicePlaneLabel">
+     <property name="toolTip">
+      <string>Fiducial projection is displayed filled (opacity = Projection Opacity) when on top of slice plane, outlined when behind, and with full opacity when in the plane. Outline isn't used for some glyphs (Dash2D, Cross2D, Starburst).</string>
+     </property>
+     <property name="text">
+      <string>Slice Plane:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QCheckBox" name="pointOutlinedBehindSlicePlaneCheckBox">
+     <property name="toolTip">
+      <string>Fiducial projection is displayed filled (opacity = Projection Opacity) when on top of slice plane, outlined when behind, and with full opacity when in the plane. Outline isn't used for some glyphs (Dash2D, Cross2D, Starburst).</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ctkCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>ctkCheckBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkSliderWidget</class>
+   <extends>QWidget</extends>
+   <header>ctkSliderWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkColorPickerButton</class>
+   <extends>QPushButton</extends>
+   <header>ctkColorPickerButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc"/>
+ </resources>
+ <connections/>
+</ui>

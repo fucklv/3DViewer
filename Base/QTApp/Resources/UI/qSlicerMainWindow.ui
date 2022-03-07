@@ -1,0 +1,2160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerMainWindow</class>
+ <widget class="QMainWindow" name="qSlicerMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1156</width>
+    <height>994</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+    color: white;
+	border: none;
+	font: 12pt &quot;Microsoft YaHei&quot;;
+}
+
+QMenuBar::item:selected {
+    background: #6987d5;
+}
+
+/* 选中条目时 */
+QMenu::item:selected {
+	background: #6987d5;
+}
+
+/* 选中条目时 */
+QMenu::item {
+	color: #FFFFFF;
+}
+
+QToolTip{ 
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QFileDialog {
+	color: #ffffff;
+    font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QWidget#widget_3{
+	background-color: #383852;
+	border-left:none;
+	border-right:none;
+	
+	border-style:solid;
+	border-top-width: 1px;
+    border-top-color: #020203;
+	border-bottom-width: 1px;
+    border-bottom-color: #020203;
+	padding:1px;
+
+}
+
+/*垂直滚动条整体*/
+QScrollBar:vertical
+{
+    width:8px;
+    background:#323349;
+    margin:0px,0px,0px,0px;
+    padding-top:0px;   /*上预留位置*/
+    padding-bottom:0px;    /*下预留位置*/
+}
+ 
+/*滚动条中滑块的样式*/
+QScrollBar::handle:vertical
+{
+    width:8px;
+    background:#727284;
+    min-height:20px;
+}
+ 
+/*鼠标触及滑块样式*/
+QScrollBar::handle:vertical:hover
+{
+    width:9px;
+    background:#727284;
+    min-height:20;
+}
+ 
+/*设置下箭头*/
+QScrollBar::add-line:vertical
+{
+    height:0px;
+    width:0px;
+    subcontrol-position:bottom;
+}
+ 
+/*设置上箭头*/
+QScrollBar::sub-line:vertical
+{
+    height:0px;
+    width:0px;
+    subcontrol-position:top;
+}
+ 
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical
+{
+    background:rgb(0,0,0,10%);
+    border-radius:4px;
+}
+
+QWidget#CentralWidget
+{
+	border-top:none;
+	border-right:none;
+	border-left: none;
+	
+	border-style:solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #020203;
+	padding:1px;
+}
+
+QDockWidget &gt; QWidget {
+	border-top:none;
+	border-right:none;
+	border-left: none;
+	
+	border-style:solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #020203;
+	padding:1px;
+	color: #ffffff;
+}
+
+QWidget
+{
+	color: #ffffff;
+}
+
+QSlider::groove:horizontal {
+	border: 1px solid #41507D;
+	background: #41507D;
+	height:	2px;
+	margin: 0px 0;
+	left: 5px; right: 5px;
+}
+
+QSlider::handle:horizontal {
+	border: 0px ;
+	width: 10px;
+	margin: -7px -7px -7px -7px;
+	background: #e6edff;
+}
+
+QSlider::add-page:horizontal{
+	background: #41507d;
+	min-height: 2px;
+	max-height: 2px;
+
+}
+
+QSlider::sub-page:horizontal{
+	background: #6987d5;
+	min-height: 2px;
+	max-height: 2px; 
+}
+
+/*
+QPushButton:disabled{
+	background-color: #70708d;
+}
+
+QToolButton:disabled{
+	background-color: #70708d;
+}
+*/
+</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QWidget" name="WindowTitleWidget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(23, 23, 32);</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,8,0">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="labelIconImage">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">QLabel{	
+	font: 12pt &quot;SimHei&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>  中创新影 3Dviewer</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="DoubleClickedButton" name="DoubleclickPushButton">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 30;
+    height:30;
+	border: none;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="minPushButton">
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	width: 30;
+    height:30;
+	border-image: url(:/Images/minWindow.png);
+}
+
+QPushButton:hover {
+	width: 30;
+    height:30;
+	background-color: rgb(60, 60, 90);
+	border-image: url(:/Images/minWindow1.png);
+}
+
+QPushButton:pressed {
+	background-color: rgb(60, 60, 90);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="maxPushButton">
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	width: 30;
+    height:30;
+	border-image: url(:/Images/maxWindow.png);
+}
+
+QPushButton:hover {
+	width: 30;
+    height:30;
+	background-color: rgb(60, 60, 90);
+	border-image: url(:/Images/maxWindow1.png);
+}
+
+QPushButton:pressed {
+	background-color: rgb(60, 60, 90);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="closePushButton">
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+	width: 30;
+    height:30;
+	border-image: url(:/Images/closeWindow.png);
+}
+
+QPushButton:hover {
+	width: 30;
+    height:30;
+	background-color: rgb(105, 135, 213);
+	border-image: url(:/Images/closeWindow1.png);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_3" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
+          <property name="tabletTracking">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="ToolBarWidgets" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>500</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolBar QToolButton{
+	width: 32;
+    height:22;
+	border:none;
+}
+
+QToolBar QToolButton::hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QToolBar QToolButton::checked {
+	background-color: rgb(105, 135, 213);
+}
+
+QToolBar QToolButton::menu-button{
+	border:none;
+}
+
+QToolButton{
+	width: 32;
+    height:20;
+	border:none;
+}
+
+QToolButton::hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QToolButton::checked {
+	background-color: rgb(105, 135, 213);
+}
+
+QToolButton::menu-button{
+	border:none;
+}
+</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QWidget" name="DataProbeCollapsibleWidget" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text" stdset="0">
+              <string>Data Probe</string>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
+        <property name="leftMargin">
+         <number>1</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>1</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QDockWidget" name="PanelDockWidget">
+          <property name="minimumSize">
+           <size>
+            <width>410</width>
+            <height>93</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>410</width>
+            <height>524287</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="floating">
+           <bool>false</bool>
+          </property>
+          <property name="features">
+           <set>QDockWidget::NoDockWidgetFeatures</set>
+          </property>
+          <property name="allowedAreas">
+           <set>Qt::NoDockWidgetArea</set>
+          </property>
+          <widget class="QWidget" name="dockWidgetContents">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="LogoLabel">
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="qSlicerModulePanel" name="ModulePanel" native="true">
+              <property name="maximumSize">
+               <size>
+                <width>530</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QWidget" name="CentralWidget" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="mouseTracking">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QWidget" name="toolbarWidget" native="true">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="mouseTracking">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget#toolbarWidget
+{
+	background-color: #28293a;
+	border-top:none;
+	border-right:none;
+	
+	border-style:solid;
+	border-left-width: 1px;
+    border-left-color: #020203;
+	border-bottom-width: 1px;
+	border-bottom-color: #020203;
+	padding:1px;
+}</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="spacing">
+            <number>8</number>
+           </property>
+           <property name="leftMargin">
+            <number>4</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>2</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="fileLoadDataPushButton">
+             <property name="toolTip">
+              <string>打开</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+	border-image: url(:/Icons/Small/SlicerLoadData.png);
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+	border-image: url(:/Icons/Small/Icons/Small/SlicerLoadData1.png);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="fileSaveScenePushButton">
+             <property name="toolTip">
+              <string>保存</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+	border-image: url(:/Icons/Small/SlicerSave.png);
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+	border-image: url(:/Icons/Small/Icons/Small/SlicerSave1.png);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="annotationsButton">
+             <property name="toolTip">
+              <string>Annotations</string>
+             </property>
+             <property name="toolTipDuration">
+              <number>-1</number>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/annotations.png</normaloff>:/Icons/Icons/annotations.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>16</width>
+               <height>18</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="slicerElastixButton">
+             <property name="toolTip">
+              <string>General Registration (Elastix)</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Extension.png</normaloff>:/Icons/Extension.png</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="transformsButton">
+             <property name="toolTip">
+              <string>变形场管理</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/TransformsTool.png</normaloff>:/Icons/Icons/TransformsTool.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="gradientADButton">
+             <property name="toolTip">
+              <string>Gradient Anisotropic Diffusion</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/Extension_noise reduction.png</normaloff>:/Icons/Icons/Extension_noise reduction.png</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="volumeRenderingButton">
+             <property name="toolTip">
+              <string>Volume Rendering</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/volumes.png</normaloff>:/Icons/Icons/volumes.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="segmentEditorButton">
+             <property name="toolTip">
+              <string>SegmentEditor</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/SegmentEditor.png</normaloff>:/Icons/Icons/SegmentEditor.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="markupsButton">
+             <property name="toolTip">
+              <string>Markups</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/markupsZ.png</normaloff>:/Icons/Icons/markupsZ.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="decimationButton">
+             <property name="toolTip">
+              <string>减面</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/Remove surface.png</normaloff>:/Icons/Icons/Remove surface.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="dataButton">
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Data</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/data.png</normaloff>:/Icons/Icons/data.png</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="DICOMButton">
+             <property name="toolTip">
+              <string>DICOM</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Small/SlicerLoadDICOM.png</normaloff>:/Icons/Small/SlicerLoadDICOM.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="modelsButton">
+             <property name="toolTip">
+              <string>Models</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/modelsZC.png</normaloff>:/Icons/Icons/modelsZC.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="segmentationsButton">
+             <property name="toolTip">
+              <string>Segmentations</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/SegmentationsZC.png</normaloff>:/Icons/Icons/SegmentationsZC.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>13</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="volumesButton">
+             <property name="toolTip">
+              <string>Volumes</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/volumes.png</normaloff>:/Icons/Icons/volumes.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>17</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="interactiveLobeSegmentationButton">
+             <property name="toolTip">
+              <string>Interactive Lobe Segmentation</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Extension.png</normaloff>:/Icons/Extension.png</iconset>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="autoExclusive">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="previousPushButton">
+             <property name="toolTip">
+              <string>向前导航</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/UndoTool.png</normaloff>:/Icons/Icons/UndoTool.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>15</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="nextPushButton">
+             <property name="toolTip">
+              <string>向后导航</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	width: 32;
+    height:32;
+	max-width: 32;
+	max-height:32;
+	border:none;
+	color: #ffffff;
+}
+
+QPushButton:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QPushButton:pressed {
+	background-color: #6987d5; 
+}
+
+
+QPushButton::checked {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc">
+               <normaloff>:/Icons/Icons/RedoTool.png</normaloff>:/Icons/Icons/RedoTool.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>17</width>
+               <height>15</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="moduleSelectorTool" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>32</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="mouseTracking">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolBar QToolButton{
+    border: none;
+}
+
+QToolBar QToolButton::hover {
+	background-color: rgb(105, 135, 213);
+}</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <action name="ViewLayoutConventionalAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutConventionalView.png</normaloff>:/Icons/LayoutConventionalView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Conventional</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutConventionalQuantitativeAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutConvetionalQuantitativeView.png</normaloff>:/Icons/LayoutConvetionalQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Standard</string>
+   </property>
+   <property name="toolTip">
+    <string>Conventional Quantitative uses jqPlot</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutFourUpAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourUpView.png</normaloff>:/Icons/LayoutFourUpView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Four-Up</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutFourUpQuantitativeAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourUpQuantitativeView.png</normaloff>:/Icons/LayoutFourUpQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Standard</string>
+   </property>
+   <property name="toolTip">
+    <string>Four-Up Quantitative uses jqPlot</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutDual3DAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutDual3DView.png</normaloff>:/Icons/LayoutDual3DView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Dual 3D</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutOneUp3DAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutOneUp3DView.png</normaloff>:/Icons/LayoutOneUp3DView.png</iconset>
+   </property>
+   <property name="text">
+    <string>3D only</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayout3DTableAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/Layout3DTableView.png</normaloff>:/Icons/Layout3DTableView.png</iconset>
+   </property>
+   <property name="text">
+    <string>3D Table</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutOneUpQuantitativeAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutOneUpQuantitativeView.png</normaloff>:/Icons/LayoutOneUpQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Standard</string>
+   </property>
+   <property name="toolTip">
+    <string>One-Up Quantitative uses jqPlot</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutOneUpRedSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutOneUpRedSliceView.png</normaloff>:/Icons/LayoutOneUpRedSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Red slice only</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutOneUpYellowSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutOneUpYellowSliceView.png</normaloff>:/Icons/LayoutOneUpYellowSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Yellow slice only</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutOneUpGreenSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutOneUpGreenSliceView.png</normaloff>:/Icons/LayoutOneUpGreenSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Green slice only</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutTabbedSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutTabbedSliceView.png</normaloff>:/Icons/LayoutTabbedSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Tabbed slice</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutTabbed3DAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutTabbed3DView.png</normaloff>:/Icons/LayoutTabbed3DView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Tabbed 3D</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Compare</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreenAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Compare Widescreen</string>
+   </property>
+   <property name="toolTip">
+    <string>Compare Widescreen</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutTwoOverTwoAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutTwoOverTwoView.png</normaloff>:/Icons/LayoutTwoOverTwoView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Two over two</string>
+   </property>
+   <property name="toolTip">
+    <string>Two over Two Layout</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutConventionalWidescreenAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutConventionalWidescreenView.png</normaloff>:/Icons/LayoutConventionalWidescreenView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Conventional Widescreen</string>
+   </property>
+  </action>
+  <action name="ViewLayoutTriple3DAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutTriple3DView.png</normaloff>:/Icons/LayoutTriple3DView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Triple 3D</string>
+   </property>
+  </action>
+  <action name="ViewLayoutThreeOverThreeAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutThreeOverThreeView.png</normaloff>:/Icons/LayoutThreeOverThreeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Three over three</string>
+   </property>
+  </action>
+  <action name="ViewLayoutFourOverFourAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourOverFourView.png</normaloff>:/Icons/LayoutFourOverFourView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Four over four</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_3_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>3 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_2_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>2 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_4_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>4 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_5_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>5 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_6_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>6 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_7_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>7 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompare_8_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareView.png</normaloff>:/Icons/LayoutCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>8 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_2_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>2 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_3_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>3 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_4_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>4 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_5_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>5 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_6_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>6 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_7_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>7 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareWidescreen_8_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideCompareView.png</normaloff>:/Icons/LayoutSideBySideCompareView.png</iconset>
+   </property>
+   <property name="text">
+    <string>8 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareGridAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareViewGrid.png</normaloff>:/Icons/LayoutCompareViewGrid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Compare Grid</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareGrid_3x3_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareViewGrid.png</normaloff>:/Icons/LayoutCompareViewGrid.png</iconset>
+   </property>
+   <property name="text">
+    <string>3x3 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareGrid_2x2_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareViewGrid.png</normaloff>:/Icons/LayoutCompareViewGrid.png</iconset>
+   </property>
+   <property name="text">
+    <string>2x2 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutCompareGrid_4x4_viewersAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutCompareViewGrid.png</normaloff>:/Icons/LayoutCompareViewGrid.png</iconset>
+   </property>
+   <property name="text">
+    <string>4x4 viewers</string>
+   </property>
+  </action>
+  <action name="ViewLayoutThreeOverThreeQuantitativeAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutThreeOverThreeQuantitativeView.png</normaloff>:/Icons/LayoutThreeOverThreeQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Standard</string>
+   </property>
+   <property name="toolTip">
+    <string>Three Over Three Quantitative uses jqPlot</string>
+   </property>
+  </action>
+  <action name="ViewLayoutSideBySideAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutSideBySideView.png</normaloff>:/Icons/LayoutSideBySideView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Side by side</string>
+   </property>
+  </action>
+  <action name="ViewLayoutFourByThreeSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourByThreeSliceView.png</normaloff>:/Icons/LayoutFourByThreeSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Four by three slice</string>
+   </property>
+   <property name="toolTip">
+    <string>Four by three slice</string>
+   </property>
+  </action>
+  <action name="ViewLayoutFourByTwoSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourByTwoSliceView.png</normaloff>:/Icons/LayoutFourByTwoSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Four by two slice</string>
+   </property>
+   <property name="toolTip">
+    <string>Four by two slice</string>
+   </property>
+  </action>
+  <action name="ViewLayoutFiveByTwoSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFiveByTwoSliceView.png</normaloff>:/Icons/LayoutFiveByTwoSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Five by two slice</string>
+   </property>
+   <property name="toolTip">
+    <string>Five by two slice</string>
+   </property>
+  </action>
+  <action name="ViewLayoutThreeByThreeSliceAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutThreeByThreeSliceView.png</normaloff>:/Icons/LayoutThreeByThreeSliceView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Three by three slice</string>
+   </property>
+   <property name="toolTip">
+    <string>Three by three slice</string>
+   </property>
+  </action>
+  <action name="ViewLayoutOneUpPlotAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutOneUpQuantitativeView.png</normaloff>:/Icons/LayoutOneUpQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Interactive</string>
+   </property>
+   <property name="toolTip">
+    <string>One-Up Quantitative uses VTK plot</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutFourUpPlotAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourUpQuantitativeView.png</normaloff>:/Icons/LayoutFourUpQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Interactive</string>
+   </property>
+   <property name="toolTip">
+    <string>Four-Up Quantitative uses VTKPlot</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutConventionalPlotAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutConvetionalQuantitativeView.png</normaloff>:/Icons/LayoutConvetionalQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Interactive</string>
+   </property>
+   <property name="toolTip">
+    <string>Conventional Quantitative uses VTKPlot</string>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
+  </action>
+  <action name="ViewLayoutThreeOverThreePlotAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutThreeOverThreeQuantitativeView.png</normaloff>:/Icons/LayoutThreeOverThreeQuantitativeView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Interactive</string>
+   </property>
+   <property name="toolTip">
+    <string>Three Over Three Quantitative uses VTKPlot</string>
+   </property>
+  </action>
+  <action name="ViewLayoutFourUpTableAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourUpTableView.png</normaloff>:/Icons/LayoutFourUpTableView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Four-Up Table</string>
+   </property>
+  </action>
+  <action name="ViewLayoutFourUpPlotTableAction">
+   <property name="icon">
+    <iconset>
+     <normaloff>:/Icons/LayoutFourUpQuantitativeTableView.png</normaloff>:/Icons/LayoutFourUpQuantitativeTableView.png</iconset>
+   </property>
+   <property name="text">
+    <string>Table</string>
+   </property>
+   <property name="toolTip">
+    <string>vtkPlot and Table</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerModulePanel</class>
+   <extends>qSlicerWidget</extends>
+   <header>qSlicerModulePanel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DoubleClickedButton</class>
+   <extends>QPushButton</extends>
+   <header>doubleclickedbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../QTGUI/Resources/qSlicerBaseQTGUI.qrc"/>
+ </resources>
+ <connections/>
+</ui>

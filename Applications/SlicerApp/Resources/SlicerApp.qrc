@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="SplashScreen.png">Images/Slicer-SplashScreen.png</file>
+        <file>qt_zh_CN.qm</file>
+        <file>Images/closeWindow.png</file>
+        <file>Images/maxWindow.png</file>
+        <file>Images/minWindow.png</file>
+        <file>Images/reductionWindow.png</file>
+        <file>Images/closeWindow1.png</file>
+        <file>Images/maxWindow1.png</file>
+        <file>Images/minWindow1.png</file>
+        <file>Images/reductionWindow1.png</file>
+        <file>Images/LOGO.png</file>
+        <file>Images/OpenFile.png</file>
+        <file>Images/screenshot.png</file>
+        <file>Images/marker.png</file>
+        <file alias="Icons/Medium/DesktopIcon.png">Icons/Medium/Slicer-DesktopIcon.png</file>
+        <file>Images/HelpDoc.png</file>
+        <file>Images/scissors.png</file>
+        <file>Images/save.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qMRMLVolumePropertyNodeWidget</class>
+ <widget class="QWidget" name="qMRMLVolumePropertyNodeWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>240</width>
+    <height>338</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Volume Property Node</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="ctkVTKVolumePropertyWidget" name="VolumePropertyWidget" native="true">
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:vertical  {
+	border: 1px solid #41507D;
+	background: #41507D;
+	width:	2px;
+	margin: 0px 0;
+	left: 5px; right: 5px;
+}
+
+QSlider::handle:vertical  {
+	border: 0px ;
+	height: 10px;
+	margin: -7px -7px -7px -7px;
+	background: #e6edff;
+}
+
+QSlider::add-page:vertical {
+	background: #41507d;
+	min-width: 2px;
+	max-width: 2px;
+
+}
+
+QSlider::sub-page:vertical {
+	background: #6987d5;
+	min-width: 2px;
+	max-width: 2px; 
+}
+
+QToolButton
+{
+	width: 24px;
+	height: 21px;
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QToolButton:hover
+{
+	background: #5C5C74;
+}</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ctkVTKVolumePropertyWidget</class>
+   <extends>QWidget</extends>
+   <header>ctkVTKVolumePropertyWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

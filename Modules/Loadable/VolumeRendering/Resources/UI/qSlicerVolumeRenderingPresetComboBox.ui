@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerVolumeRenderingPresetComboBox</class>
+ <widget class="qSlicerWidget" name="qSlicerVolumeRenderingPresetComboBox">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>388</width>
+    <height>123</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Volume Rendering Presets</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout_2">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
+   <property name="horizontalSpacing">
+    <number>8</number>
+   </property>
+   <property name="verticalSpacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="PresetsLabel">
+     <property name="text">
+      <string>预设：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="qSlicerPresetComboBox" name="PresetComboBox" native="true"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>变换：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="ctkDoubleSlider" name="PresetOffsetSlider" native="true">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QSlider::groove:horizontal {
+	border: 1px solid #41507D;
+	background: #41507D;
+	height:	2px;
+	margin: 0px 0;
+	left: 5px; right: 5px;
+}
+
+QSlider::handle:horizontal {
+	border: 0px ;
+	width: 10px;
+	margin: -7px -7px -7px -7px;
+	background: #e6edff;
+}
+
+QSlider::add-page:horizontal{
+	background: #41507d;
+	min-height: 2px;
+	max-height: 2px;
+
+}
+
+QSlider::sub-page:horizontal{
+	background: #6987d5;
+	min-height: 2px;
+	max-height: 2px; 
+}
+</string>
+     </property>
+     <property name="value" stdset="0">
+      <double>0.500000000000000</double>
+     </property>
+     <property name="singleStep" stdset="0">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="pageStep" stdset="0">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="maximum" stdset="0">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="handleToolTip" stdset="0">
+      <string>%1</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerPresetComboBox</class>
+   <extends>qMRMLNodeComboBox</extends>
+   <header>qSlicerPresetComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkDoubleSlider</class>
+   <extends>QWidget</extends>
+   <header>ctkDoubleSlider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>qSlicerVolumeRenderingPresetComboBox</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>PresetComboBox</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>4</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>173</x>
+     <y>18</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

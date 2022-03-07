@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qMRMLSegmentationFileExportWidget</class>
+ <widget class="qMRMLWidget" name="qMRMLSegmentationFileExportWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>416</width>
+    <height>345</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>425</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>qMRMLSegmentationFileExportWidget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QComboBox {
+	color: rgb(255, 255, 255);
+    background: #191925;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	height:21px;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;     
+    color: rgb(255, 255, 255);
+    background-color: rgb(60, 60, 90);   
+    selection-background-color: rgb(105, 135, 213);  
+}
+
+QComboBox QAbstractItemView::item:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox QAbstractItemView::item:selected {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox:hover{
+	background-color: rgb(105, 135, 213);
+}
+
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+    subcontrol-position: top right;
+    /*width: 20px;*/
+ 	
+    /*border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;*/ /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+	image: url(:/Icons/comboBoxDown1.png);
+}
+
+QDoubleSpinBox {
+	/* 为箭头保留空间 */
+	/*padding-right:20px;*/
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	color: rgb(255, 255, 255);
+	min-height:21px;
+	max-height:21px;
+}
+
+/* 向上按钮 */
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QDoubleSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QDoubleSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QDoubleSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QDoubleSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+QCheckBox {
+	color: rgb(255, 255, 255);
+    spacing: 7px;/*复选框文本与勾选框（就是左边的勾选小框框，自己瞎叫的）的距离*/
+}
+
+QCheckBox::indicator {
+    width: 16px;/*勾选框的大小*/
+    height: 16px;
+}
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:unchecked {
+    image: url(:/Icons/CheckBoxImage1.png);
+}
+
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/Icons/CheckBoxImage.png);
+}
+
+QWidget#widget{
+	background-color: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QWidget{
+	color: #ffffff;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="DestinationFoldeLabel">
+        <property name="text">
+         <string>目标文件夹：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="HorizontalLayout">
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="ctkDirectoryButton" name="DestinationFolderButton" native="true">
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>240</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::TabFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QWidget{
+	background: #191925;
+	border: 1px solid #5c5c74;
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="ShowDestinationFolderButton">
+          <property name="toolTip">
+           <string>Browse to destination folder</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{ 
+	font: 10pt 'Microsoft YaHei';
+	min-width: 68; 
+	min-height: 24;
+	max-width: 68; 
+	max-height: 24;
+	background: #191925; 
+	border: 1px solid #5c5c74;
+}
+
+QToolButton:hover{
+	background-color: #5C5C74;
+}</string>
+          </property>
+          <property name="text">
+           <string>导出</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="VisibleSegmentsOnlyLabel">
+        <property name="text">
+         <string>只看segments：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QCheckBox" name="VisibleSegmentsOnlyCheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Only export those segments that are currently visible.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="FileFormatLabel">
+        <property name="text">
+         <string>文件格式：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="FileFormatComboBox">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <item>
+         <property name="text">
+          <string>STL</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>OBJ</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NRRD</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>NIFTI</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="MergeIntoSingleFileLabel">
+        <property name="text">
+         <string>合并为单个文件：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QCheckBox" name="MergeIntoSingleOBJFileCheckBox">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="toolTip">
+           <string>Export all segments to a single OBJ file. It is always enabled for OBJ files, as segments can be distinguished based on their material.</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="MergeIntoSingleSTLFileCheckBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>Export all segments to a single output STL file.</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="SizeScaleLabel">
+        <property name="text">
+         <string>尺寸比例：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="ctkDoubleSpinBox" name="SizeScaleSpinBox" native="true">
+        <property name="focusPolicy">
+         <enum>Qt::TabFocus</enum>
+        </property>
+        <property name="toolTip">
+         <string>Adjust the exported model size. Point coordinates in the exported model will be multiplied by this number. By default Slicer uses millimeter unit for coordinates.</string>
+        </property>
+        <property name="decimals" stdset="0">
+         <number>3</number>
+        </property>
+        <property name="minimum" stdset="0">
+         <double>0.000001000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>1000000.000000000000000</double>
+        </property>
+        <property name="singleStep" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="CoordinateSystemLabel">
+        <property name="text">
+         <string>坐标系：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QComboBox" name="CoordinateSystemComboBox">
+        <property name="toolTip">
+         <string>Output model XYZ axes are mapped to LPS (left-posterior-superior) or RAS (right-anterior-superior) patient axis directions. LPS is used more commonly.</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <item>
+         <property name="text">
+          <string>LPS</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>RAS</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="UseCompressionLabel">
+        <property name="text">
+         <string>压缩：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QCheckBox" name="UseCompressionCheckBox">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="UseColorTableValuesLabel">
+        <property name="text">
+         <string>用颜色标签：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <layout class="QHBoxLayout" name="ColorTableLayout">
+        <item>
+         <widget class="QCheckBox" name="UseColorTableValuesCheckBox">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="qMRMLNodeComboBox" name="ColorTableNodeSelector" native="true">
+          <property name="nodeTypes" stdset="0">
+           <stringlist>
+            <string>vtkMRMLColorTableNode</string>
+           </stringlist>
+          </property>
+          <property name="noneEnabled" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="addEnabled" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="removeEnabled" stdset="0">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="ShowDestinationFolderOnExportCompleteLabel">
+        <property name="text">
+         <string>显示目标文件夹：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QCheckBox" name="ShowDestinationFolderOnExportCompleteCheckBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Open destination folder when export is completed.</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="ExportToFilesButton">
+          <property name="maximumSize">
+           <size>
+            <width>70</width>
+            <height>26</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{ 
+	font: 10pt 'Microsoft YaHei';
+	min-width: 68; 
+	min-height: 24;
+	max-width: 68; 
+	max-height: 24;
+	background: #191925; 
+	border: 1px solid #5c5c74;
+}
+
+QPushButton:hover{
+	background-color: #5C5C74;
+}</string>
+          </property>
+          <property name="text">
+           <string>导出</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkDoubleSpinBox</class>
+   <extends>QWidget</extends>
+   <header>ctkDoubleSpinBox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkDirectoryButton</class>
+   <extends>QWidget</extends>
+   <header>ctkDirectoryButton.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>DestinationFolderButton</tabstop>
+  <tabstop>ShowDestinationFolderButton</tabstop>
+  <tabstop>FileFormatComboBox</tabstop>
+  <tabstop>SizeScaleSpinBox</tabstop>
+  <tabstop>CoordinateSystemComboBox</tabstop>
+  <tabstop>ExportToFilesButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../../../../Base/QTGUI/Resources/qSlicerBaseQTGUI.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>qMRMLSegmentationFileExportWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>ColorTableNodeSelector</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>169</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

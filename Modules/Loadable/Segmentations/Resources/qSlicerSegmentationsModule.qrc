@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/AddLabelmap.png</file>
+        <file>Icons/Segmentations.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerModelsModuleWidget</class>
+ <widget class="qSlicerWidget" name="qSlicerModelsModuleWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>501</width>
+    <height>779</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Models</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QComboBox {
+	color: rgb(255, 255, 255);
+    background: #191925;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	height: 21px;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;     
+    color: rgb(255, 255, 255);
+    background-color: rgb(60, 60, 90);   
+    selection-background-color: rgb(105, 135, 213);  
+}
+
+QComboBox QAbstractItemView::item:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox QAbstractItemView::item:selected {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox:hover{
+	background-color: rgb(105, 135, 213);
+}
+
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+    subcontrol-position: top right;
+    /*width: 20px;*/
+ 	
+    /*border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;*/ /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+	image: url(:/Icons/comboBoxDown1.png);
+}
+
+QSpinBox {
+	/* 为箭头保留空间 */
+	/*padding-right:20px;*/
+	color: rgb(255, 255, 255);
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	min-height:21px;
+	max-height:21px;
+}
+
+/* 向上按钮 */
+QSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+
+QDoubleSpinBox {
+	/* 为箭头保留空间 */
+	padding-right:20px;
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	color: rgb(255, 255, 255);
+
+	min-height:21px;
+	max-height:21px;
+}
+
+/* 向上按钮 */
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QDoubleSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QDoubleSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QDoubleSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QDoubleSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+
+QRadioButton {
+    spacing: 5px;
+    font: 12pt &quot;Microsoft YaHei&quot;; 
+	color: rgb(255, 255, 255);
+}
+ 
+QRadioButton::indicator {  
+    width: 16px;
+    height: 16px;
+}
+ 
+QRadioButton::indicator:checked {  
+	image: url(:/Icons/RadioButtonSg1.png);
+}
+ 
+QRadioButton::indicator:unchecked {  
+    image: url(:/Icons/RadioButtonSg.png);
+}
+
+QTableView
+{
+    alternate-background-color:#e3edf9;
+    gridline-color: #5c5c74;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	selection-background-color: #6987d5;
+	font: 11pt &quot;Microsoft YaHei&quot;;
+	color: rgb(255, 255, 255);
+}
+ 
+QHeaderView::section
+{
+    background: #191925;
+	border: 1px solid #5c5c74;
+	background-color:transparent
+}
+
+QTreeView
+{
+	background: #191925;
+}
+
+QTreeView::item{
+	height: 26;
+	alternate-background-color:#e3edf9;
+	gridline-color: #5c5c74;
+	selection-background-color: #6987d5;
+	font: 11pt &quot;Microsoft YaHei&quot;;
+	color: rgb(255, 255, 255);
+} 
+
+QSlider::groove:horizontal {
+	border: 1px solid #41507D;
+	background: #41507D;
+	height:	2px;
+	margin: 0px 0;
+	left: 5px; right: 5px;
+}
+
+QSlider::handle:horizontal {
+	border: 0px ;
+	width: 10px;
+	margin: -7px -7px -7px -7px;
+	background: #e6edff;
+}
+
+QSlider::add-page:horizontal{
+	background: #41507d;
+	min-height: 2px;
+	max-height: 2px;
+
+}
+
+QSlider::sub-page:horizontal{
+	background: #6987d5;
+	min-height: 2px;
+	max-height: 2px; 
+}
+
+QCheckBox {
+	color: rgb(255, 255, 255);
+    spacing: 7px;/*复选框文本与勾选框（就是左边的勾选小框框，自己瞎叫的）的距离*/
+}
+
+QCheckBox::indicator {
+    width: 16px;/*勾选框的大小*/
+    height: 16px;
+}
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:unchecked {
+    image: url(:/Icons/CheckBoxImage1.png);
+}
+
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/Icons/CheckBoxImage.png);
+}
+
+QWidget{
+	color: #ffffff;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QWidget#InformationButton,
+QWidget#DisplayButton,
+QWidget#ClippingButton
+{
+	border: none;
+	background: #28293a;
+}
+
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>10</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>9</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="leftMargin">
+      <number>4</number>
+     </property>
+     <property name="topMargin">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="minimumSize">
+        <size>
+         <width>17</width>
+         <height>17</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>17</width>
+         <height>17</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	width: 17;
+	height: 17;
+	border-image: url(:/Icons/Icons/modelsZC.png);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	font: 16pt &quot;Microsoft YaHei&quot;;
+}</string>
+       </property>
+       <property name="text">
+        <string>模型</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="ctkExpandableWidget" name="ResizableFrame">
+     <property name="sizeGripInside" stdset="0">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="allModelsHorizontalLayout">
+        <item>
+         <widget class="ctkSearchBox" name="FilterModelSearchBox">
+          <property name="styleSheet">
+           <string notr="true">QLineEdit{
+	height: 24px;
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+}
+</string>
+          </property>
+          <property name="placeholderText">
+           <string>Filter by name...</string>
+          </property>
+          <property name="showSearchIcon" stdset="0">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="hideAllModelsButton">
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	width: 30;
+	height: 24px;
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QPushButton:hover {
+	background-color: #5C5C74;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/Icons/Small/SlicerInvisible.png</normaloff>:/Icons/Small/SlicerInvisible.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="showAllModelsButton">
+          <property name="toolTip">
+           <string/>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+	width: 30;
+	height: 24px;
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QPushButton:hover {
+	background-color: #5C5C74;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset>
+            <normaloff>:/Icons/Small/SlicerVisible.png</normaloff>:/Icons/Small/SlicerVisible.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="qMRMLSubjectHierarchyTreeView" name="SubjectHierarchyTreeView">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="dragDropMode">
+         <enum>QAbstractItemView::InternalMove</enum>
+        </property>
+        <property name="indentation">
+         <number>12</number>
+        </property>
+        <property name="editMenuActionVisible" stdset="0">
+         <bool>false</bool>
+        </property>
+        <property name="multiSelection" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="InformationButton" native="true">
+     <property name="text" stdset="0">
+      <string>信息</string>
+     </property>
+     <property name="collapsed" stdset="0">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="qMRMLModelInfoWidget" name="MRMLModelInfoWidget" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="DisplayButton" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" stdset="0">
+      <string>显示</string>
+     </property>
+     <property name="collapsed" stdset="0">
+      <bool>false</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="qMRMLModelDisplayNodeWidget" name="ModelDisplayWidget" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="clippingConfigurationButtonVisible" stdset="0">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="qMRMLNodeComboBox" name="ClipModelsNodeComboBox" native="true">
+     <property name="nodeTypes" stdset="0">
+      <stringlist>
+       <string>vtkMRMLClipModelsNode</string>
+      </stringlist>
+     </property>
+     <property name="showHidden" stdset="0">
+      <bool>true</bool>
+     </property>
+     <property name="addEnabled" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="removeEnabled" stdset="0">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="ClippingButton" native="true">
+     <property name="text" stdset="0">
+      <string>Clipping Planes</string>
+     </property>
+     <property name="collapsed" stdset="0">
+      <bool>true</bool>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="ClipSelectedModelLabel">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Clip selected model:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QCheckBox" name="ClipSelectedModelCheckBox">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="qMRMLClipNodeWidget" name="MRMLClipNodeWidget" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>0</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLSubjectHierarchyTreeView</class>
+   <extends>QTreeView</extends>
+   <header>qMRMLSubjectHierarchyTreeView.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ctkCollapsibleButton</class>
+   <extends>QWidget</extends>
+   <header>ctkCollapsibleButton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkExpandableWidget</class>
+   <extends>QFrame</extends>
+   <header>ctkExpandableWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLClipNodeWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLClipNodeWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLModelInfoWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLModelInfoWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLModelDisplayNodeWidget</class>
+   <extends>qMRMLWidget</extends>
+   <header>qMRMLModelDisplayNodeWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkSearchBox</class>
+   <extends>QLineEdit</extends>
+   <header>ctkSearchBox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>qSlicerModelsModuleWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>ClipModelsNodeComboBox</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>588</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>465</x>
+     <y>740</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>qSlicerModelsModuleWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>ModelDisplayWidget</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ClipModelsNodeComboBox</sender>
+   <signal>currentNodeChanged(vtkMRMLNode*)</signal>
+   <receiver>MRMLClipNodeWidget</receiver>
+   <slot>setMRMLClipNode(vtkMRMLNode*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>255</x>
+     <y>740</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>780</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>qSlicerModelsModuleWidget</sender>
+   <signal>mrmlSceneChanged(vtkMRMLScene*)</signal>
+   <receiver>SubjectHierarchyTreeView</receiver>
+   <slot>setMRMLScene(vtkMRMLScene*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>288</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>showAllModelsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>qSlicerModelsModuleWidget</receiver>
+   <slot>showAllModels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>613</x>
+     <y>13</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>528</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>hideAllModelsButton</sender>
+   <signal>clicked()</signal>
+   <receiver>qSlicerModelsModuleWidget</receiver>
+   <slot>hideAllModels()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>579</x>
+     <y>11</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>207</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>hideAllModels()</slot>
+  <slot>showAllModels()</slot>
+ </slots>
+</ui>

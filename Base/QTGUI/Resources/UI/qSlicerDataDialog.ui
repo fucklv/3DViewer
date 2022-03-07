@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerDataDialog</class>
+ <widget class="QDialog" name="qSlicerDataDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>742</width>
+    <height>404</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>向场景中添加数据</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qSlicerBaseQTGUI.qrc">
+    <normaloff>:/Icons/Small/SlicerLoadData.png</normaloff>:/Icons/Small/SlicerLoadData.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QTableWidget{
+	selection-background-color: #41507d;
+    background: #1a1a26;
+	border: 1px solid #5c5c74;
+	color: rgb(255, 255, 255);
+}
+
+/*垂直滚动条整体*/
+QScrollBar:vertical
+{
+    width:8px;
+    background:#323349;
+    margin:0px,0px,0px,0px;
+    padding-top:0px;   /*上预留位置*/
+    padding-bottom:0px;    /*下预留位置*/
+}
+ 
+/*滚动条中滑块的样式*/
+QScrollBar::handle:vertical
+{
+    width:8px;
+    background:#727284;
+    min-height:20px;
+}
+ 
+/*鼠标触及滑块样式*/
+QScrollBar::handle:vertical:hover
+{
+    width:9px;
+    background:#727284;
+    min-height:20;
+}
+ 
+/*设置下箭头*/
+QScrollBar::add-line:vertical
+{
+    height:0px;
+    width:0px;
+    subcontrol-position:bottom;
+}
+ 
+/*设置上箭头*/
+QScrollBar::sub-line:vertical
+{
+    height:0px;
+    width:0px;
+    subcontrol-position:top;
+}
+ 
+/*当滚动条滚动的时候，上面的部分和下面的部分*/
+QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical
+{
+    background:rgb(0,0,0,10%);
+    border-radius:4px;
+}
+
+QPushButton#AddDirectoryButton,
+QPushButton#AddFilesButton{
+	color: rgb(255, 255, 255);
+	height: 24px;
+	font: 10pt &quot;SimHei&quot;;
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QPushButton#AddDirectoryButton:hover,
+QPushButton#AddFilesButton:hover {
+	background-color: #5C5C74;
+}
+
+
+QCheckBox {
+    spacing: 7px;/*复选框文本与勾选框（就是左边的勾选小框框，自己瞎叫的）的距离*/
+}
+
+QCheckBox::indicator {
+    width: 16px;/*勾选框的大小*/
+    height: 16px;
+}
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:unchecked {
+    image: url(:/Icons/CheckBoxImage1.png);
+}
+
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/Icons/CheckBoxImage.png);
+}
+
+QComboBox {
+	color: rgb(255, 255, 255);
+    background: #191925;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QComboBox QAbstractItemView {
+    outline: 0px solid gray;     
+    color: rgb(255, 255, 255);
+    background-color: rgb(60, 60, 90);   
+    selection-background-color: rgb(105, 135, 213);  
+}
+
+QComboBox QAbstractItemView::item:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox QAbstractItemView::item:selected {
+    color: rgb(255, 255, 255);
+    background-color: rgb(105, 135, 213);
+}
+
+QComboBox:hover{
+	background-color: rgb(105, 135, 213);
+}
+
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+    subcontrol-position: top right;
+    /*width: 20px;*/
+ 	
+    /*border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid;*/ /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+	image: url(:/Icons/comboBoxDown1.png);
+}
+
+QSpinBox {
+	/* 为箭头保留空间 */
+	/*padding-right:20px;*/
+	color: rgb(255, 255, 255);
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	min-height:21px;
+	max-height:21px;
+}
+
+/* 向上按钮 */
+QSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+
+QDoubleSpinBox {
+	/* 为箭头保留空间 */
+	padding-right:20px;
+	background: #1a1a26;
+	border: 1px solid #5c5c74;
+	color: rgb(255, 255, 255);
+
+	min-height:21px;
+	max-height:21px;
+}
+
+/* 向上按钮 */
+QDoubleSpinBox::up-button {
+	subcontrol-origin:border;
+	subcontrol-position:top right;
+	width:16px;
+	border-width:1px;
+}
+
+QDoubleSpinBox::up-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+QDoubleSpinBox::down-button {
+	subcontrol-origin:border;
+	subcontrol-position:bottom right;
+	width:16px;
+	border-width:1px;
+	border-top-width:0;
+}
+
+/* 向下按钮 */
+QDoubleSpinBox::down-button:hover {
+	background-color: rgb(105, 135, 213);
+}
+
+/* 向下按钮里的小箭头 */
+QDoubleSpinBox::down-arrow {
+	image:url(:/Icons/SpinboxDown.png);
+	width:7px;
+	height:4px;
+}
+
+/* 向上按钮里的小箭头 */
+QDoubleSpinBox::up-arrow {
+	image:url(:/Icons/SpinboxUp.png);
+	width:7px;
+	height:4px;
+}
+
+QWidget{
+	color: #ffffff;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QPushButton" name="AddDirectoryButton">
+     <property name="font">
+      <font>
+       <family>SimHei</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>选择要添加的目录</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QPushButton" name="AddFilesButton">
+     <property name="font">
+      <font>
+       <family>SimHei</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>选择要添加的文件</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>530</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="4">
+    <widget class="QTableWidget" name="FileWidget">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTableWidget::indicator{
+width: 16px;/*勾选框的大小*/
+height: 16px;
+}
+
+QTableWidget::indicator:checked
+{
+image: url(:/Icons/CheckBoxImage.png);
+}
+
+QTableWidget::indicator:unchecked
+{
+image: url(:/Icons/CheckBoxImage1.png);
+}
+
+
+QToolButton{
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QToolButton:hover {
+	background-color: #5C5C74;
+}
+
+QTableWidget::item:hover
+{
+	background-color: #6987d5;
+}
+</string>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::NoSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="textElideMode">
+      <enum>Qt::ElideLeft</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="cornerButtonEnabled">
+      <bool>false</bool>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>文件</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>说明</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>选项</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="4">
+    <widget class="QDialogButtonBox" name="ButtonBox">
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QCheckBox" name="ShowOptionsCheckBox">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>显示选项</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../qSlicerBaseQTGUI.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>ButtonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>qSlicerDataDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ButtonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>qSlicerDataDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

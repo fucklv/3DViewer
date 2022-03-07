@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qSlicerAnnotationModuleWidget</class>
+ <widget class="qSlicerWidget" name="qSlicerAnnotationModuleWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>466</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Annotation</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#CTKCollapsibleButton
+{	
+	background: #28293a;
+	border: none;
+}
+
+QTableView
+{
+    alternate-background-color:#e3edf9;
+    gridline-color: #5c5c74;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	selection-background-color: #6987d5;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	color: rgb(255, 255, 255);
+}
+ 
+QHeaderView::section
+{
+    background: #191925;
+	border: 1px solid #5c5c74;
+	background-color:transparent
+}
+
+QTreeView
+{
+	background: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QTreeView::item{
+	height: 26;
+	alternate-background-color:#e3edf9;
+	gridline-color: #5c5c74;
+	selection-background-color: #6987d5;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	color: rgb(255, 255, 255);
+} 
+
+QWidget
+{
+	font: 10pt &quot;Microsoft YaHei&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QGroupBox#CTKCollapsibleGroupBox_3
+{
+	background: #191925;
+	border:1px solid #5c5c74;
+}
+
+
+QPushButton#selectAllButton,
+QPushButton#unselectAllButton,
+QPushButton#visibleSelectedButton,
+QPushButton#lockSelectedButton,
+QPushButton#jumpSlicesButton,
+QPushButton#addHierarchyButton,
+QPushButton#generateReport,
+QPushButton#deleteSelectedButton,
+QPushButton#visibleHierarchyButton,
+QPushButton#invisibleHierarchyButton,
+QPushButton#lockHierarchyButton,
+QPushButton#unlockHierarchyButton{
+	min-width: 44;
+	min-height: 44;
+	max-width: 44;
+	max-height: 44;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	border-radius: 1px;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QPushButton#selectAllButton:hover,
+QPushButton#unselectAllButton:hover,
+QPushButton#visibleSelectedButton:hover,
+QPushButton#lockSelectedButton:hover,
+QPushButton#jumpSlicesButton:hover,
+QPushButton#addHierarchyButton:hover,
+QPushButton#generateReport:hover,
+QPushButton#deleteSelectedButton:hover,
+QPushButton#visibleHierarchyButton:hover,
+QPushButton#invisibleHierarchyButton:hover,
+QPushButton#lockHierarchyButton:hover,
+QPushButton#unlockHierarchyButton:hover
+{
+	background-color: #5C5C74;
+}
+
+QCheckBox {
+    spacing: 7px;/*复选框文本与勾选框的距离*/
+}
+
+QCheckBox::indicator {
+    width: 16px;/*勾选框的大小*/
+    height: 16px;
+}
+/*勾选框未选中时的图像*/
+QCheckBox::indicator:unchecked {
+    image: url(:/Icons/CheckBoxImage1.png);
+}
+
+/*勾选框选中时的图像*/
+QCheckBox::indicator:checked {
+    image: url(:/Icons/CheckBoxImage.png);
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="leftMargin">
+      <number>9</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="minimumSize">
+        <size>
+         <width>16</width>
+         <height>18</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16</width>
+         <height>18</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	width: 16;
+	height: 18;
+	border-image: url(:/Icons/Icons/annotations.png);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="styleSheet">
+        <string notr="true">QLabel{
+	font: 16pt &quot;Microsoft YaHei&quot;;
+}</string>
+       </property>
+       <property name="text">
+        <string>Annotations</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="ctkCollapsibleButton" name="CTKCollapsibleButton" native="true">
+     <property name="styleSheet">
+      <string notr="true">QPushButton#RegionNodeRenameTFsButton,
+QPushButton#RegionNodeEditTFsButton,
+QPushButton#RegionNodeDeleteTFsButton{
+	min-width: 30;
+	min-height: 24;
+	max-width: 30;
+	max-height: 24;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	border-radius: 1px;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QPushButton#RegionNodeRenameTFsButton:hover,
+QPushButton#RegionNodeEditTFsButton:hover,
+QPushButton#RegionNodeDeleteTFsButton:hover,
+QPushButton#GlyphToggle:hover,
+QPushButton#GridToggle:hover,
+QPushButton#ContourToggle:hover
+{
+	background-color: #5C5C74;
+}</string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Annotations</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="markupsLabel">
+        <property name="font">
+         <font>
+          <family>Microsoft YaHei</family>
+          <pointsize>10</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>Fiducials have moved to the Markups module.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="ctkCollapsibleGroupBox" name="CTKCollapsibleGroupBox_3">
+        <property name="title">
+         <string>编辑</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="topMargin">
+          <number>24</number>
+         </property>
+         <property name="verticalSpacing">
+          <number>10</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="selectAllButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Select all annotations and hierarchies</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerAnnotationModule.qrc">
+             <normaloff>:/Icons/AnnotationSelectAll.png</normaloff>
+             <normalon>:/Icons/AnnotationDeselectAll.png</normalon>:/Icons/AnnotationSelectAll.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="unselectAllButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Unselect all annotations and hierarchies</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerAnnotationModule.qrc">
+             <normaloff>:/Icons/AnnotationDeselectAll.png</normaloff>:/Icons/AnnotationDeselectAll.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="visibleSelectedButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Toggle the visibility of highlighted Annotations. Hierarchies are ignored.</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Medium/SlicerVisibleInvisible.png</normaloff>:/Icons/Medium/SlicerVisibleInvisible.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QPushButton" name="lockSelectedButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Lock/ unlock highlighted annotations. Hierarchies are ignored.</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Medium/SlicerLockUnlock.png</normaloff>:/Icons/Medium/SlicerLockUnlock.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QPushButton" name="jumpSlicesButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Reset sliceViews to the first coordinate of the highlighted annotation.</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerAnnotationModule.qrc">
+             <normaloff>:/Icons/AnnotationResetView.png</normaloff>:/Icons/AnnotationResetView.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="5">
+          <widget class="QPushButton" name="addHierarchyButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Create a new hierarchy. If a hierarchy is currently highlighted, the new one will be a sub-hierarchy.</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Medium/SlicerAddHierarchy.png</normaloff>:/Icons/Medium/SlicerAddHierarchy.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="6">
+          <widget class="QPushButton" name="generateReport">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Display a report of highlighted annotations</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerAnnotationModule.qrc">
+             <normaloff>:/Icons/AnnotationReport.png</normaloff>:/Icons/AnnotationReport.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="7">
+          <widget class="QPushButton" name="deleteSelectedButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Delete highlighted annotations. Hierarchies have to single selected to get deleted.</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerAnnotationModule.qrc">
+             <normaloff>:/Icons/AnnotationDelete.png</normaloff>:/Icons/AnnotationDelete.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="visibleHierarchyButton">
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Set all annotations in active list visible</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Small/SlicerVisible.png</normaloff>:/Icons/Small/SlicerVisible.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="invisibleHierarchyButton">
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Set all annotations in active list invisible</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Small/SlicerInvisible.png</normaloff>:/Icons/Small/SlicerInvisible.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="lockHierarchyButton">
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Set all annotations in active list locked</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Small/SlicerLock.png</normaloff>:/Icons/Small/SlicerLock.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QPushButton" name="unlockHierarchyButton">
+           <property name="maximumSize">
+            <size>
+             <width>46</width>
+             <height>46</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Set all annotations in active list to be unlocked</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/Icons/Small/SlicerUnlock.png</normaloff>:/Icons/Small/SlicerUnlock.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4" colspan="4">
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0" colspan="8">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="activeHierarchyLabel">
+             <property name="toolTip">
+              <string>Click a hierarchy to activate it. If the Main Hierarchy is active, new per-annotation lists will be created under it, otherwise annotations will be added to the active list.</string>
+             </property>
+             <property name="text">
+              <string>Active list: </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0" colspan="8">
+          <widget class="qMRMLAnnotationTreeView" name="hierarchyTreeView">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">
+
+/*QTreeWidget::indicator:indeterminate {image: url(:/Images/bxz.png);} // 半选中*/
+
+QTreeView::indicator{
+    width: 16px;/*勾选框的大小*/
+    height: 16px;
+}
+
+QTreeView::indicator:checked 
+{
+	image: url(:/Icons/CheckBoxImage.png);
+}
+
+QTreeView::indicator:unchecked 
+{
+	image: url(:/Icons/CheckBoxImage1.png);
+}</string>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::InternalMove</enum>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
+           </property>
+           <property name="indentation">
+            <number>10</number>
+           </property>
+           <property name="uniformRowHeights">
+            <bool>true</bool>
+           </property>
+           <property name="listenNodeModifiedEvent" stdset="0">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkDynamicSpacer" name="CTKSpacer" native="true">
+     <property name="activeSizePolicy" stdset="0">
+      <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="inactiveSizePolicy" stdset="0">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="active" stdset="0">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ctkDynamicSpacer" name="DynamicSpacer" native="true">
+     <property name="activeSizePolicy" stdset="0">
+      <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="inactiveSizePolicy" stdset="0">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="active" stdset="0">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ctkDynamicSpacer</class>
+   <extends>QWidget</extends>
+   <header>ctkDynamicSpacer.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qSlicerWidget</class>
+   <extends>QWidget</extends>
+   <header>qSlicerWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkCollapsibleGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>ctkCollapsibleGroupBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkCollapsibleButton</class>
+   <extends>QWidget</extends>
+   <header>ctkCollapsibleButton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLAnnotationTreeView</class>
+   <extends>QTreeView</extends>
+   <header>qMRMLAnnotationTreeView.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../qSlicerAnnotationModule.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>CTKCollapsibleButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CTKSpacer</receiver>
+   <slot>setActive(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>89</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>220</x>
+     <y>571</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CTKCollapsibleGroupBox_3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>DynamicSpacer</receiver>
+   <slot>setActive(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>173</x>
+     <y>218</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

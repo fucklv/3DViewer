@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>qMRMLSegmentationDisplayNodeWidget</class>
+ <widget class="qMRMLWidget" name="qMRMLSegmentationDisplayNodeWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>428</width>
+    <height>436</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>qMRMLSegmentationDisplayNodeWidget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QGroupBox#CollapsibleGroupBox_Advanced{
+	background-color: #191925;
+	border: 1px solid #5c5c74;
+}
+
+QWidget{
+	color: #ffffff;
+}
+
+QWidget#widget
+{
+	background-color: #191925;
+}
+
+QGroupBox#groupBox_SelectedSegment
+{
+	background-color: #191925;
+	border: 1px solid #5c5c74;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>10</number>
+      </property>
+      <property name="rightMargin">
+       <number>10</number>
+      </property>
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_Visible">
+        <property name="text">
+         <string>全部可见：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="checkBox_Visible">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_OverallOpacity">
+        <property name="text">
+         <string>全部不透明度：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="ctkSliderWidget" name="SliderWidget_Opacity" native="true">
+        <property name="singleStep" stdset="0">
+         <double>0.100000000000000</double>
+        </property>
+        <property name="pageStep" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="maximum" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="value" stdset="0">
+         <double>1.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="4">
+       <widget class="QFrame" name="frame_VisibilityOpacity">
+        <property name="styleSheet">
+         <string notr="true">QFrame#frame_VisibilityOpacity{
+	background-color: #191925;
+	border: 1px solid #5c5c74;
+}
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
+          <number>4</number>
+         </property>
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item row="2" column="3">
+          <widget class="ctkSliderWidget" name="SliderWidget_OpacitySliceFill" native="true">
+           <property name="singleStep" stdset="0">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="pageStep" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="maximum" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value" stdset="0">
+            <double>0.500000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QCheckBox" name="checkBox_VisibilitySliceOutline">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="3">
+          <widget class="ctkSliderWidget" name="SliderWidget_Opacity3D" native="true">
+           <property name="singleStep" stdset="0">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="pageStep" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="maximum" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="ctkSliderWidget" name="SliderWidget_OpacitySliceOutline" native="true">
+           <property name="singleStep" stdset="0">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="pageStep" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="maximum" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="value" stdset="0">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" colspan="2">
+          <widget class="QLabel" name="label_Visibility">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>可见度</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_3D">
+           <property name="text">
+            <string>3D：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QCheckBox" name="checkBox_Visibility3D">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>8</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="2" column="2">
+          <widget class="QCheckBox" name="checkBox_VisibilitySliceFill">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_SliceFill">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>切片填充：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_SliceOutline">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>1</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>切片轮廓：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLabel" name="label_Opacity">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>不透明度</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="4">
+       <widget class="QGroupBox" name="CollapsibleGroupBox_Advanced">
+        <property name="title">
+         <string/>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="collapsed" stdset="0">
+         <bool>true</bool>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_Views">
+           <property name="text">
+            <string>查看：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="qMRMLDisplayNodeViewComboBox" name="DisplayNodeViewComboBox" native="true"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_SliceIntersectionThickness">
+           <property name="text">
+            <string>切片厚度：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="spinBox_SliceIntersectionThickness">
+           <property name="suffix">
+            <string> px</string>
+           </property>
+           <property name="maximum">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_Representation3D">
+           <property name="toolTip">
+            <string>Representation that is shown as a model in 3D and as slice intersections in 2D if exists</string>
+           </property>
+           <property name="text">
+            <string>3D显示：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboBox_DisplayedRepresentation3D">
+           <property name="toolTip">
+            <string>Representation that is shown in 3D (models only)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_Representation2D">
+           <property name="text">
+            <string>2D显示：</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QComboBox" name="comboBox_DisplayedRepresentation2D">
+           <property name="toolTip">
+            <string>Representation that is shown in the 2D slice views</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="labelGroupBoxTitle">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0" colspan="2">
+          <widget class="QGroupBox" name="groupBox_SelectedSegment">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_3">
+            <property name="leftMargin">
+             <number>4</number>
+            </property>
+            <property name="topMargin">
+             <number>4</number>
+            </property>
+            <property name="rightMargin">
+             <number>4</number>
+            </property>
+            <property name="bottomMargin">
+             <number>4</number>
+            </property>
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_SliceOutline_SelectedSegment">
+              <property name="text">
+               <string>切片轮廓：</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QCheckBox" name="checkBox_VisibilitySliceFill_SelectedSegment">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_SliceFill_SelectedSegment">
+              <property name="text">
+               <string>切片填充：</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QCheckBox" name="checkBox_VisibilitySliceOutline_SelectedSegment">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <widget class="QLabel" name="label_Visibility_SelectedSegment">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>可见度</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>8</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="2">
+             <widget class="QCheckBox" name="checkBox_Visibility3D_SelectedSegment">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLabel" name="label_3D_SelectedSegment">
+              <property name="text">
+               <string>3D：</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="ctkSliderWidget" name="SliderWidget_OpacitySliceFill_SelectedSegment" native="true">
+              <property name="toolTip">
+               <string>Value relative to other segments. The final opacity depends both on the per-segment opacity and the overall opacity (above)</string>
+              </property>
+              <property name="singleStep" stdset="0">
+               <double>0.100000000000000</double>
+              </property>
+              <property name="pageStep" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="maximum" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="value" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="ctkSliderWidget" name="SliderWidget_OpacitySliceOutline_SelectedSegment" native="true">
+              <property name="toolTip">
+               <string>Value relative to other segments. The final opacity depends both on the per-segment opacity and the overall opacity (above)</string>
+              </property>
+              <property name="singleStep" stdset="0">
+               <double>0.100000000000000</double>
+              </property>
+              <property name="pageStep" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="maximum" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="value" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="3">
+             <widget class="ctkSliderWidget" name="SliderWidget_Opacity3D_SelectedSegment" native="true">
+              <property name="toolTip">
+               <string>Value relative to other segments. The final opacity depends both on the per-segment opacity and the overall opacity (above)</string>
+              </property>
+              <property name="singleStep" stdset="0">
+               <double>0.100000000000000</double>
+              </property>
+              <property name="pageStep" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="maximum" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="value" stdset="0">
+               <double>1.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="label_Opacity_SelectedSegment">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>透明度</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qMRMLNodeComboBox</class>
+   <extends>QWidget</extends>
+   <header>qMRMLNodeComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLWidget</class>
+   <extends>QWidget</extends>
+   <header>qMRMLWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ctkSliderWidget</class>
+   <extends>QWidget</extends>
+   <header>ctkSliderWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLCheckableNodeComboBox</class>
+   <extends>qMRMLNodeComboBox</extends>
+   <header>qMRMLCheckableNodeComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>qMRMLDisplayNodeViewComboBox</class>
+   <extends>qMRMLCheckableNodeComboBox</extends>
+   <header>qMRMLDisplayNodeViewComboBox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
