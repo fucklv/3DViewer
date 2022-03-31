@@ -63,6 +63,9 @@ class Q_SLICER_MODULE_SEGMENTATIONS_WIDGETS_EXPORT qMRMLSegmentsModel : public Q
   /// Control in which column the segment layer is displayed (qMRMLSegmentsModel::LayerRole).
   Q_PROPERTY(int layerColumn READ layerColumn WRITE setLayerColumn)
 
+  Q_PROPERTY(int statisticsColumn READ statisticsColumn WRITE setStatisticsColumn)
+
+
 public:
 
   enum SegmentTableItemDataRole
@@ -89,6 +92,8 @@ public:
   void setStatusColumn(int column);
   int layerColumn()const;
   void setLayerColumn(int layer);
+  int statisticsColumn()const;
+  void setStatisticsColumn(int  column);
 
   /// Returns the segment ID for the given index
   QString segmentIDFromIndex(const QModelIndex &index)const;

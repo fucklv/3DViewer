@@ -38,6 +38,9 @@
 // STD includes
 #include <cstdlib>
 
+//VTK includes
+
+
 class vtkMRMLNode;
 class vtkMRMLInteractionNode;
 class vtkMRMLSegmentationNode;
@@ -449,6 +452,9 @@ protected slots:
   void on_SelectMasterVleEditingButton_clicked();
   
   void on_DleCurrentVleButton_clicked();
+
+  //kyo 
+  void  on_StatisticsButton_clicked();
 
 protected:
   /// Callback function invoked when interaction happens

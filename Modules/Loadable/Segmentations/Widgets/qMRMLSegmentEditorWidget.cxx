@@ -65,6 +65,12 @@
 #include <vtkSmartPointer.h>
 #include <vtkWeakPointer.h>
 
+
+//kyo
+#include <vtkImageToImageStencil.h>
+#include <vtkImageAccumulate.h>
+#include <vtkImageHistogramStatistics.h>
+
 // Slicer includes
 #include <vtkMRMLSliceLogic.h>
 #include <vtkSlicerApplicationLogic.h>
@@ -515,6 +521,7 @@ void qMRMLSegmentEditorWidgetPrivate::init()
 
   //kyo
   QObject::connect(qSlicerApplication::application()->mainWindow(), SIGNAL(cool(bool*)), q, SLOT(SetMasterVolumeChange(bool*)));
+  QObject::connect(this->statisticsButton, SIGNAL(clicked()), q, SLOT(on_StatisticsButton_clicked()));
 
   // Create layout for effect options
   QVBoxLayout* layout = new QVBoxLayout(this->EffectsOptionsFrame);
@@ -4016,6 +4023,96 @@ void qMRMLSegmentEditorWidget::on_DleCurrentVleButton_clicked()
 {
     Q_D(qMRMLSegmentEditorWidget);
     d->MasterVolumeNodeComboBox->removeCurrentNode();
+}
+
+void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
+ {
+    Q_D(qMRMLSegmentEditorWidget);
+   
+
+    //判断数据
+    if (!d->SegmentationNode->GetSegmentation()->ContainsRepresentation(vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()))
+    {
+        return;
+    }
+
+    auto nodeList = this->d_ptr->MasterVolumeNodeComboBox->nodes();
+    d_ptr->MasterVolumeNode = nodeList[0];
+
+    if (d_ptr->MasterVolumeNode->GetImageData() == nullptr)
+    {
+        return;
+    }
+    if (d_ptr->MasterVolumeNode->GetImageData()->GetPointData() == nullptr)
+    {
+        return;
+    }
+    if (d_ptr->MasterVolumeNode->GetImageData()->GetPointData()->GetScalars() == nullptr)
+    {
+        return;
+    }
+    //坐标
+    vtkSmartPointer<vtkOrientedImageData> referenceGeometry_Reference = vtkSmartPointer<vtkOrientedImageData>::New();
+    referenceGeometry_Reference->SetExtent(d_ptr->MasterVolumeNode->GetImageData()->GetExtent());
+    vtkSmartPointer<vtkMatrix4x4> ijkToRasMatrix = vtkSmartPointer<vtkMatrix4x4>::New();
+    d_ptr->MasterVolumeNode->GetIJKToRASMatrix(ijkToRasMatrix);
+    referenceGeometry_Reference->SetGeometryFromImageToWorldMatrix(ijkToRasMatrix);
+    
+    //体数据和模型的变换
+    vtkSmartPointer<vtkGeneralTransform> segmentationToReferenceGeometryTransform = vtkSmartPointer<vtkGeneralTransform>::New();
+    vtkMRMLTransformNode::GetTransformBetweenNodes(d->SegmentationNode->GetParentTransformNode(),
+        d_ptr->MasterVolumeNode->GetParentTransformNode(), segmentationToReferenceGeometryTransform);
+
+    //计算体素大小
+    auto spacing = referenceGeometry_Reference->GetSpacing();
+    auto cubicMMPerVoxel = spacing[0]* spacing[1]* spacing[2];
+    auto ccPerCubicMM  = 0.001;
+
+    //获取遍历segment
+    std::vector<std::string> segmentIDs;
+    d->SegmentationNode->GetSegmentation()->GetSegmentIDs(segmentIDs);
+    for (std::string currentSegmentID : segmentIDs)
+    {
+        vtkSmartPointer<vtkOrientedImageData> segmentLabelmap = vtkSmartPointer<vtkOrientedImageData>::New();
+        d->SegmentationNode->GetBinaryLabelmapRepresentation(currentSegmentID, segmentLabelmap);
+        auto segment = d->SegmentationNode->GetSegmentation()->GetSegment(currentSegmentID);
+
+        vtkSmartPointer<vtkOrientedImageData> segmentLabelmap_Reference = vtkSmartPointer<vtkOrientedImageData>::New();
+        vtkOrientedImageDataResample::ResampleOrientedImageToReferenceOrientedImage(segmentLabelmap, referenceGeometry_Reference, segmentLabelmap_Reference, false, false, segmentationToReferenceGeometryTransform);
+
+        auto labelValue = 1;
+        auto backgroundValue = 0;
+        vtkSmartPointer<vtkImageThreshold> thresh = vtkSmartPointer<vtkImageThreshold>::New();
+        thresh->SetInputData(segmentLabelmap_Reference);
+        thresh->ThresholdByLower(0);
+        thresh->SetInValue(backgroundValue);
+        thresh->SetOutValue(labelValue);
+        thresh->SetOutputScalarType(VTK_UNSIGNED_CHAR);
+        thresh->Update();
+        
+        
+        vtkSmartPointer<vtkImageToImageStencil> stencil = vtkSmartPointer<vtkImageToImageStencil>::New();
+        stencil->SetInputData(thresh->GetOutput());
+        stencil->ThresholdByUpper(labelValue);
+        stencil->Update();
+
+        vtkSmartPointer<vtkImageAccumulate> stat = vtkSmartPointer<vtkImageAccumulate>::New();
+        stat->SetInputData(d_ptr->MasterVolumeNode->GetImageData());
+        stat->SetStencilData(stencil->GetOutput());
+        stat->Update();
+         
+        vtkSmartPointer<vtkImageHistogramStatistics> medians = vtkSmartPointer<vtkImageHistogramStatistics>::New();
+        medians->SetInputData(d_ptr->MasterVolumeNode->GetImageData());
+        medians->SetStencilData(stencil->GetOutput());
+        medians->Update();
+
+        auto mm3 = stat->GetVoxelCount()* cubicMMPerVoxel* ccPerCubicMM;
+
+        //回填数据
+        auto index = d->SegmentsTableView->rowForSegmentID(QString::fromStdString(currentSegmentID));
+        auto modelIndex = d->SegmentsTableView->tableWidget()->model()->index(index, 6);
+        auto item = d->SegmentsTableView->tableWidget()->model()->setData(modelIndex, mm3);
+    }
 }
 
 //---------------------------------------------------------------------------

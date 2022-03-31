@@ -82,6 +82,8 @@ public:
   int OpacityColumn;
   int StatusColumn;
   int LayerColumn;
+  int statisticsColumn;
+
 
   QIcon VisibleIcon;
   QIcon HiddenIcon;

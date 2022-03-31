@@ -263,7 +263,7 @@ void qMRMLSegmentsTableViewPrivate::init()
 
   // Hide layer column
   q->setLayerColumnVisible(false);
-
+  
   // Hide Status column
   q->setStatusColumnVisible(false);
 
@@ -271,9 +271,11 @@ void qMRMLSegmentsTableViewPrivate::init()
 
   this->SegmentsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
   this->SegmentsTable->horizontalHeader()->setSectionResizeMode(this->Model->nameColumn(), QHeaderView::Stretch);
+  //kyo
+  this->SegmentsTable->horizontalHeader()->setSectionResizeMode(this->Model->statisticsColumn(), QHeaderView::ResizeToContents);
   this->SegmentsTable->horizontalHeader()->setStretchLastSection(false);
   this->SegmentsTable->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-
+  this->SegmentsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
   // Select rows
   this->SegmentsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 

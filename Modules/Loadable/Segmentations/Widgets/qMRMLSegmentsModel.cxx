@@ -65,14 +65,13 @@ qMRMLSegmentsModelPrivate::qMRMLSegmentsModelPrivate(qMRMLSegmentsModel& object)
   , ColorColumn(-1)
   , OpacityColumn(-1)
   , StatusColumn(-1)
+  , statisticsColumn(-1)
   , LayerColumn(-1)
   , SegmentationNode(nullptr)
 {
   this->CallBack = vtkSmartPointer<vtkCallbackCommand>::New();
-
   this->HiddenIcon = QIcon(":Icons/VisibleOff.png");
   this->VisibleIcon = QIcon(":Icons/VisibleOn.png");
-
   this->NotStartedIcon = QIcon(":Icons/NotStarted.png");
   this->InProgressIcon = QIcon(":Icons/InProgress.png");
   this->FlaggedIcon = QIcon(":Icons/Flagged.png");
@@ -105,6 +104,7 @@ void qMRMLSegmentsModelPrivate::init()
   q->setNameColumn(2);
   q->setLayerColumn(3);
   q->setStatusColumn(4);
+  q->setStatisticsColumn(6);
 
   QStringList columnLabels;
   for (int i = 0; i < q->columnCount(); ++i)
@@ -133,6 +133,11 @@ void qMRMLSegmentsModelPrivate::init()
       {
       columnLabels << "";
       }
+    //kyo
+    else if (i == q->statisticsColumn())
+     {
+      columnLabels << "volume";
+     }
     }
   q->setHorizontalHeaderLabels(columnLabels);
 
@@ -149,6 +154,7 @@ void qMRMLSegmentsModelPrivate::init()
   q->horizontalHeaderItem(q->colorColumn())->setText("颜色");
   q->horizontalHeaderItem(q->nameColumn())->setText(qMRMLSegmentsModel::tr("名称"));
   q->horizontalHeaderItem(q->opacityColumn())->setText("透明度");
+  q->horizontalHeaderItem(q->statisticsColumn())->setText(qMRMLSegmentsModel::tr("体积"));
   q->horizontalHeaderItem(q->statusColumn())->setIcon(QIcon(":/Icons/Flagged.png"));
 }
 
@@ -987,6 +993,19 @@ void qMRMLSegmentsModel::setLayerColumn(int column)
   this->updateColumnCount();
 }
 
+int qMRMLSegmentsModel::statisticsColumn() const
+{
+    Q_D(const qMRMLSegmentsModel);
+    return d->statisticsColumn;
+}
+
+void qMRMLSegmentsModel::setStatisticsColumn(int column)
+{
+    Q_D(qMRMLSegmentsModel);
+    d->statisticsColumn = column;
+    this->updateColumnCount();
+}
+
 //------------------------------------------------------------------------------
 void qMRMLSegmentsModel::updateColumnCount()
 {
@@ -1025,6 +1044,7 @@ int qMRMLSegmentsModel::maxColumnId()const
   maxId = qMax(maxId, d->ColorColumn);
   maxId = qMax(maxId, d->OpacityColumn);
   maxId = qMax(maxId, d->StatusColumn);
+  maxId = qMax(maxId, d->statisticsColumn);
   return maxId;
 }
 
