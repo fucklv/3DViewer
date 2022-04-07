@@ -65,7 +65,6 @@
 #include <vtkSmartPointer.h>
 #include <vtkWeakPointer.h>
 
-
 //kyo
 #include <vtkImageToImageStencil.h>
 #include <vtkImageAccumulate.h>
@@ -118,6 +117,8 @@
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <QWidgetAction>
+#include <QProgressDialog>
+#include <QDesktopWidget>
 
 // CTK includes
 #include <ctkFlowLayout.h>
@@ -4030,6 +4031,8 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
     Q_D(qMRMLSegmentEditorWidget);
    
 
+
+
     //判断数据
     if (!d->SegmentationNode->GetSegmentation()->ContainsRepresentation(vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()))
     {
@@ -4051,13 +4054,15 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
     {
         return;
     }
-    //坐标
+
+     //坐标
+    //extent parenTeansformNodeSegment  parenTeansformNodeVolumn
     vtkSmartPointer<vtkOrientedImageData> referenceGeometry_Reference = vtkSmartPointer<vtkOrientedImageData>::New();
     referenceGeometry_Reference->SetExtent(d_ptr->MasterVolumeNode->GetImageData()->GetExtent());
     vtkSmartPointer<vtkMatrix4x4> ijkToRasMatrix = vtkSmartPointer<vtkMatrix4x4>::New();
     d_ptr->MasterVolumeNode->GetIJKToRASMatrix(ijkToRasMatrix);
     referenceGeometry_Reference->SetGeometryFromImageToWorldMatrix(ijkToRasMatrix);
-    
+
     //体数据和模型的变换
     vtkSmartPointer<vtkGeneralTransform> segmentationToReferenceGeometryTransform = vtkSmartPointer<vtkGeneralTransform>::New();
     vtkMRMLTransformNode::GetTransformBetweenNodes(d->SegmentationNode->GetParentTransformNode(),
@@ -4065,12 +4070,29 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
 
     //计算体素大小
     auto spacing = referenceGeometry_Reference->GetSpacing();
-    auto cubicMMPerVoxel = spacing[0]* spacing[1]* spacing[2];
-    auto ccPerCubicMM  = 0.001;
+    auto cubicMMPerVoxel = spacing[0] * spacing[1] * spacing[2];
+    auto ccPerCubicMM = 0.001;
 
     //获取遍历segment
     std::vector<std::string> segmentIDs;
     d->SegmentationNode->GetSegmentation()->GetSegmentIDs(segmentIDs);
+
+    //================================================================================================================================
+    QProgressDialog* progressDialog = new QProgressDialog(this);
+    progressDialog->setWindowModality(Qt::WindowModal);
+    progressDialog->setWindowIcon(QIcon(":/Icons/Edit.png"));
+    progressDialog->setWindowTitle(tr("体积计算"));
+    progressDialog->setRange(0, 100);
+    progressDialog->setValue(10);
+    progressDialog->setCancelButton(0);
+    //================================================================================================================================
+
+    double onePice = 0.0;
+    int i = 1;
+    if (segmentIDs.size() != 0)
+    {
+        onePice = 100.00 / segmentIDs.size();
+    }
     for (std::string currentSegmentID : segmentIDs)
     {
         vtkSmartPointer<vtkOrientedImageData> segmentLabelmap = vtkSmartPointer<vtkOrientedImageData>::New();
@@ -4089,8 +4111,8 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
         thresh->SetOutValue(labelValue);
         thresh->SetOutputScalarType(VTK_UNSIGNED_CHAR);
         thresh->Update();
-        
-        
+
+
         vtkSmartPointer<vtkImageToImageStencil> stencil = vtkSmartPointer<vtkImageToImageStencil>::New();
         stencil->SetInputData(thresh->GetOutput());
         stencil->ThresholdByUpper(labelValue);
@@ -4100,19 +4122,22 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
         stat->SetInputData(d_ptr->MasterVolumeNode->GetImageData());
         stat->SetStencilData(stencil->GetOutput());
         stat->Update();
-         
+
         vtkSmartPointer<vtkImageHistogramStatistics> medians = vtkSmartPointer<vtkImageHistogramStatistics>::New();
         medians->SetInputData(d_ptr->MasterVolumeNode->GetImageData());
         medians->SetStencilData(stencil->GetOutput());
         medians->Update();
 
-        auto mm3 = stat->GetVoxelCount()* cubicMMPerVoxel* ccPerCubicMM;
+        auto mm3 = stat->GetVoxelCount() * cubicMMPerVoxel * ccPerCubicMM;
 
         //回填数据
         auto index = d->SegmentsTableView->rowForSegmentID(QString::fromStdString(currentSegmentID));
         auto modelIndex = d->SegmentsTableView->tableWidget()->model()->index(index, 6);
         auto item = d->SegmentsTableView->tableWidget()->model()->setData(modelIndex, mm3);
+        progressDialog->setValue(onePice *i);
     }
+    progressDialog->setValue(100);
+    progressDialog->deleteLater();
 }
 
 //---------------------------------------------------------------------------

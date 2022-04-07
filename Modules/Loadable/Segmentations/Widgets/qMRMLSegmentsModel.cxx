@@ -154,7 +154,7 @@ void qMRMLSegmentsModelPrivate::init()
   q->horizontalHeaderItem(q->colorColumn())->setText("颜色");
   q->horizontalHeaderItem(q->nameColumn())->setText(qMRMLSegmentsModel::tr("名称"));
   q->horizontalHeaderItem(q->opacityColumn())->setText("透明度");
-  q->horizontalHeaderItem(q->statisticsColumn())->setText(qMRMLSegmentsModel::tr("体积"));
+  q->horizontalHeaderItem(q->statisticsColumn())->setText(qMRMLSegmentsModel::tr("体积(毫升)"));
   q->horizontalHeaderItem(q->statusColumn())->setIcon(QIcon(":/Icons/Flagged.png"));
 }
 

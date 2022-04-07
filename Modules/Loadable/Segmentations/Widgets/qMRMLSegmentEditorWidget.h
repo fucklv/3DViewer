@@ -38,9 +38,6 @@
 // STD includes
 #include <cstdlib>
 
-//VTK includes
-
-
 class vtkMRMLNode;
 class vtkMRMLInteractionNode;
 class vtkMRMLSegmentationNode;
@@ -478,5 +475,4 @@ private:
   Q_DECLARE_PRIVATE(qMRMLSegmentEditorWidget);
   Q_DISABLE_COPY(qMRMLSegmentEditorWidget);
 };
-
 #endif
