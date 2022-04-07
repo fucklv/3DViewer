@@ -468,7 +468,8 @@ protected:
   /// Switches to Segmentations module and returns the module widget
   qSlicerAbstractModuleWidget* switchToSegmentationsModule();
 
-protected:
+//protected:
+  public:
   QScopedPointer<qMRMLSegmentEditorWidgetPrivate> d_ptr;
 
 private:

@@ -4030,43 +4030,38 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
  {
     Q_D(qMRMLSegmentEditorWidget);
    
-
-
-
     //判断数据
     if (!d->SegmentationNode->GetSegmentation()->ContainsRepresentation(vtkSegmentationConverter::GetSegmentationBinaryLabelmapRepresentationName()))
     {
         return;
     }
 
-    auto nodeList = this->d_ptr->MasterVolumeNodeComboBox->nodes();
-    d_ptr->MasterVolumeNode = nodeList[0];
+    auto nodeList = d->MasterVolumeNodeComboBox->nodes();
+    d->MasterVolumeNode = nodeList[0];
 
-    if (d_ptr->MasterVolumeNode->GetImageData() == nullptr)
+    if (d->MasterVolumeNode->GetImageData() == nullptr)
     {
         return;
     }
-    if (d_ptr->MasterVolumeNode->GetImageData()->GetPointData() == nullptr)
+    if (d->MasterVolumeNode->GetImageData()->GetPointData() == nullptr)
     {
         return;
     }
-    if (d_ptr->MasterVolumeNode->GetImageData()->GetPointData()->GetScalars() == nullptr)
+    if (d->MasterVolumeNode->GetImageData()->GetPointData()->GetScalars() == nullptr)
     {
         return;
     }
-
-     //坐标
-    //extent parenTeansformNodeSegment  parenTeansformNodeVolumn
+    //坐标
     vtkSmartPointer<vtkOrientedImageData> referenceGeometry_Reference = vtkSmartPointer<vtkOrientedImageData>::New();
-    referenceGeometry_Reference->SetExtent(d_ptr->MasterVolumeNode->GetImageData()->GetExtent());
+    referenceGeometry_Reference->SetExtent(d->MasterVolumeNode->GetImageData()->GetExtent());
     vtkSmartPointer<vtkMatrix4x4> ijkToRasMatrix = vtkSmartPointer<vtkMatrix4x4>::New();
-    d_ptr->MasterVolumeNode->GetIJKToRASMatrix(ijkToRasMatrix);
+    d->MasterVolumeNode->GetIJKToRASMatrix(ijkToRasMatrix);
     referenceGeometry_Reference->SetGeometryFromImageToWorldMatrix(ijkToRasMatrix);
 
     //体数据和模型的变换
     vtkSmartPointer<vtkGeneralTransform> segmentationToReferenceGeometryTransform = vtkSmartPointer<vtkGeneralTransform>::New();
     vtkMRMLTransformNode::GetTransformBetweenNodes(d->SegmentationNode->GetParentTransformNode(),
-        d_ptr->MasterVolumeNode->GetParentTransformNode(), segmentationToReferenceGeometryTransform);
+        d->MasterVolumeNode->GetParentTransformNode(), segmentationToReferenceGeometryTransform);
 
     //计算体素大小
     auto spacing = referenceGeometry_Reference->GetSpacing();
@@ -4097,7 +4092,7 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
     {
         vtkSmartPointer<vtkOrientedImageData> segmentLabelmap = vtkSmartPointer<vtkOrientedImageData>::New();
         d->SegmentationNode->GetBinaryLabelmapRepresentation(currentSegmentID, segmentLabelmap);
-        auto segment = d->SegmentationNode->GetSegmentation()->GetSegment(currentSegmentID);
+        //auto segment = d->SegmentationNode->GetSegmentation()->GetSegment(currentSegmentID);
 
         vtkSmartPointer<vtkOrientedImageData> segmentLabelmap_Reference = vtkSmartPointer<vtkOrientedImageData>::New();
         vtkOrientedImageDataResample::ResampleOrientedImageToReferenceOrientedImage(segmentLabelmap, referenceGeometry_Reference, segmentLabelmap_Reference, false, false, segmentationToReferenceGeometryTransform);
@@ -4119,12 +4114,12 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
         stencil->Update();
 
         vtkSmartPointer<vtkImageAccumulate> stat = vtkSmartPointer<vtkImageAccumulate>::New();
-        stat->SetInputData(d_ptr->MasterVolumeNode->GetImageData());
+        stat->SetInputData(d->MasterVolumeNode->GetImageData());
         stat->SetStencilData(stencil->GetOutput());
         stat->Update();
 
         vtkSmartPointer<vtkImageHistogramStatistics> medians = vtkSmartPointer<vtkImageHistogramStatistics>::New();
-        medians->SetInputData(d_ptr->MasterVolumeNode->GetImageData());
+        medians->SetInputData(d->MasterVolumeNode->GetImageData());
         medians->SetStencilData(stencil->GetOutput());
         medians->Update();
 
@@ -4134,8 +4129,9 @@ void qMRMLSegmentEditorWidget::on_StatisticsButton_clicked()
         auto index = d->SegmentsTableView->rowForSegmentID(QString::fromStdString(currentSegmentID));
         auto modelIndex = d->SegmentsTableView->tableWidget()->model()->index(index, 6);
         auto item = d->SegmentsTableView->tableWidget()->model()->setData(modelIndex, mm3);
-        progressDialog->setValue(onePice *i);
+        progressDialog->setValue(onePice * i);
     }
+
     progressDialog->setValue(100);
     progressDialog->deleteLater();
 }
