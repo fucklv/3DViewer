@@ -711,110 +711,6 @@ QPushButton:hover {
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <property name="spacing">
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" name="UndoRedoLayout">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="UndoButton">
-           <property name="toolTip">
-            <string/>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-	width: 66;
-	height: 22;
-	background: #191925;
-	border: 1px solid #5c5c74;
-	border-radius: 1px;
-	font: 10pt &quot;Microsoft YaHei&quot;;
-}
-
-QPushButton:hover {
-	background-color: #5C5C74;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
-             <normaloff>:/Icons/UndoSg.png</normaloff>:/Icons/UndoSg.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>17</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="RedoButton">
-           <property name="toolTip">
-            <string/>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton{
-	width: 66;
-	height: 22;
-	background: #191925;
-	border: 1px solid #5c5c74;
-	border-radius: 1px;
-	font: 10pt &quot;Microsoft YaHei&quot;;
-}
-
-QPushButton:hover {
-	background-color: #5C5C74;
-}</string>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
-             <normaloff>:/Icons/RedoSg.png</normaloff>:/Icons/RedoSg.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>17</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <property name="spacing">
         <number>0</number>
@@ -1100,6 +996,126 @@ QPushButton::menu-button{border: none;}</string>
           </item>
          </layout>
         </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QWidget" name="ComputeVolumnWidget" native="true">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QWidget#toolTabelWidget{
+	background: #191925;
+	border: 1px solid #5c5c74;
+}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="UndoRedoLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="UndoButton">
+           <property name="toolTip">
+            <string/>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	width: 66;
+	height: 22;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	border-radius: 1px;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QPushButton:hover {
+	background-color: #5C5C74;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+             <normaloff>:/Icons/UndoSg.png</normaloff>:/Icons/UndoSg.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>17</width>
+             <height>15</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="RedoButton">
+           <property name="toolTip">
+            <string/>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	width: 66;
+	height: 22;
+	background: #191925;
+	border: 1px solid #5c5c74;
+	border-radius: 1px;
+	font: 10pt &quot;Microsoft YaHei&quot;;
+}
+
+QPushButton:hover {
+	background-color: #5C5C74;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../qSlicerSegmentationsModuleWidgets.qrc">
+             <normaloff>:/Icons/RedoSg.png</normaloff>:/Icons/RedoSg.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>17</width>
+             <height>15</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

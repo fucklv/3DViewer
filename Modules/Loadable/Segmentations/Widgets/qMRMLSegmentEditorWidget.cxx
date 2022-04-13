@@ -560,8 +560,8 @@ void qMRMLSegmentEditorWidgetPrivate::init()
 
   //kyo
   this->EffectsGroupBox->setVisible(false);
-  this->RedoButton->setVisible(false);
-  this->UndoButton->setVisible(false);
+  //this->RedoButton->setVisible(false);
+  //this->UndoButton->setVisible(false);
   this->OptionsGroupBox->setVisible(false);
   this->EffectHelpBrowser->setVisible(false);
   this->EffectsOptionsFrame->setVisible(false);

@@ -25,9 +25,18 @@
 #include "qSlicerFileDialog.h"
 #include "qSlicerBaseQTGUIExport.h"
 
+#include <QThread>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QMovie>
+#include <QPalette>
+#include <QDialog>
+#include <QFont>
+#include <QPushButton>
+
 /// Forward declarations
 class qSlicerSaveDataDialogPrivate;
-
 //------------------------------------------------------------------------------
 class Q_SLICER_BASE_QTGUI_EXPORT qSlicerSaveDataDialog : public qSlicerFileDialog
 {
@@ -51,7 +60,7 @@ protected:
 private:
   Q_DECLARE_PRIVATE(qSlicerSaveDataDialog);
   Q_DISABLE_COPY(qSlicerSaveDataDialog);
-
 };
+
 
 #endif

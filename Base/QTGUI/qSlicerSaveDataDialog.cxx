@@ -18,18 +18,6 @@
 
 ==============================================================================*/
 
-/// Qt includes
-#include <QApplication>
-#include <QComboBox>
-#include <QDate>
-#include <QDebug>
-#include <QLabel>
-#include <QLineEdit>
-#include <QMessageBox>
-#include <QRegExp>
-#include <QRegExpValidator>
-#include <QSettings>
-#include <QPushButton>
 
 /// CTK includes
 #include <ctkCheckableHeaderView.h>
@@ -64,8 +52,23 @@
 #include <vtkImageData.h>
 #include <vtkArchive.h>
 
+/// Qt includes
+#include <QApplication>
+#include <QComboBox>
+#include <QDate>
+#include <QDebug>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QRegExp>
+#include <QRegExpValidator>
+#include <QSettings>
+#include <QPushButton>
+#include <QProgressDialog>
+
 // STD includes
 #include <cstring> // for strlen
+
 #pragma execution_character_set("utf-8")
 
 namespace
@@ -1586,7 +1589,7 @@ bool qSlicerSaveDataDialog::exec(const qSlicerIO::IOProperties& readerProperties
   d->setMRMLScene(qSlicerCoreApplication::application()->mrmlScene());
   bool HadModified = false;
   int fileWidgetRow = d->FileWidget->rowCount();
-  std::vector<std::string> vecFiles;
+  std::vector<std::string>  vecFiles;
   for (int nb = 0; nb < fileWidgetRow; nb++)
   {
       QTableWidgetItem* selectItem = d->FileWidget->item(nb, 0);
@@ -1677,7 +1680,8 @@ bool qSlicerSaveDataDialog::exec(const qSlicerIO::IOProperties& readerProperties
           QMessageBox::Yes);
       return false;
   }
-  QString SavePath = QFileDialog::getExistingDirectory(d, tr("保存路径"),"",
+
+  QString SavePath = QFileDialog::getExistingDirectory(d, tr("保存路径"), "",
       QFileDialog::ShowDirsOnly
       | QFileDialog::DontResolveSymlinks);
   if (SavePath == "")
@@ -1686,6 +1690,20 @@ bool qSlicerSaveDataDialog::exec(const qSlicerIO::IOProperties& readerProperties
   }
   d->setDirectory(SavePath);
 
+
+  //显示进度条
+  //==================================================================================================
+  QProgressDialog* progressDialog = new QProgressDialog();
+  progressDialog->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint | Qt::WindowStaysOnTopHint);
+  progressDialog->setWindowModality(Qt::WindowModal);
+  progressDialog->setWindowIcon(QIcon(":/Images/save.png"));
+  progressDialog->setWindowTitle(tr("保存中..."));
+  progressDialog->setRange(0, 100);
+  progressDialog->setValue(10);
+  progressDialog->setCancelButton(0);
+  progressDialog->show();
+  //==================================================================================================
+ 
   if (!d->save())
   {
       return false;
@@ -1707,6 +1725,21 @@ bool qSlicerSaveDataDialog::exec(const qSlicerIO::IOProperties& readerProperties
       sit++;
   }
   d->done(QDialog::Accepted);
+  //关闭进度条
+  progressDialog->setValue(100);
+  progressDialog->deleteLater();
+  //显示完成图片
+  QDialog* successDialog = new QDialog();
+  successDialog->setWindowIcon(QIcon(":/Images/save.png"));
+  QVBoxLayout* layout = new QVBoxLayout();
+  layout->setMargin(0);
+  successDialog->setLayout(layout);
+  QLabel* ImgLabel = new QLabel();
+  ImgLabel->setPixmap(QPixmap(":/Images/success.png"));
+  layout->addWidget(ImgLabel);
+  successDialog->setWindowFlags(Qt::CustomizeWindowHint | Qt::WindowCloseButtonHint| Qt::WindowStaysOnTopHint);
+  successDialog->setWindowTitle(tr("保存完成"));
+  successDialog->show();
   return true;
 }
 

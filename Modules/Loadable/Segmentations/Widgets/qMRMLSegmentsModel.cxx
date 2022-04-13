@@ -153,8 +153,8 @@ void qMRMLSegmentsModelPrivate::init()
   //q->horizontalHeaderItem(q->colorColumn())->setIcon(QIcon(":/Icons/Colors.png"));
   q->horizontalHeaderItem(q->colorColumn())->setText("颜色");
   q->horizontalHeaderItem(q->nameColumn())->setText(qMRMLSegmentsModel::tr("名称"));
-  q->horizontalHeaderItem(q->opacityColumn())->setText("透明度");
-  q->horizontalHeaderItem(q->statisticsColumn())->setText(qMRMLSegmentsModel::tr("体积(毫升)"));
+  q->horizontalHeaderItem(q->opacityColumn())->setText(" 透明度    ");
+  q->horizontalHeaderItem(q->statisticsColumn())->setText(qMRMLSegmentsModel::tr("体积(ml) "));
   q->horizontalHeaderItem(q->statusColumn())->setIcon(QIcon(":/Icons/Flagged.png"));
 }
 

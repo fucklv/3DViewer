@@ -18,5 +18,6 @@
         <file>Images/HelpDoc.png</file>
         <file>Images/scissors.png</file>
         <file>Images/save.png</file>
+        <file>Images/success.png</file>
     </qresource>
 </RCC>
