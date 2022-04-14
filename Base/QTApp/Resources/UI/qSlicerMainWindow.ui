@@ -260,7 +260,7 @@ QToolButton:disabled{
 }</string>
                </property>
                <property name="text">
-                <string>  中创新影 3Dviewer</string>
+                <string>  中创新影 3DViewer</string>
                </property>
               </widget>
              </item>

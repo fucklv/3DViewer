@@ -324,7 +324,7 @@ QCheckBox::indicator:checked {
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_5">
      <property name="spacing">
-      <number>10</number>
+      <number>20</number>
      </property>
      <property name="rightMargin">
       <number>2</number>
@@ -795,19 +795,19 @@ QPushButton:hover {
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_9">
           <property name="spacing">
-           <number>6</number>
+           <number>9</number>
           </property>
           <property name="leftMargin">
            <number>6</number>
           </property>
           <property name="topMargin">
-           <number>2</number>
+           <number>6</number>
           </property>
           <property name="rightMargin">
            <number>9</number>
           </property>
           <property name="bottomMargin">
-           <number>2</number>
+           <number>6</number>
           </property>
           <item>
            <layout class="QHBoxLayout" name="SegmentActionsLayout">
@@ -830,7 +830,7 @@ QPushButton:hover {
 }
 
 QPushButton:hover {
-	background-color: #5C5C74;
+	background-color: #6988D6;
 }</string>
               </property>
               <property name="text">
@@ -864,7 +864,7 @@ QPushButton:hover {
 }
 
 QPushButton:hover {
-	background-color: #5C5C74;
+	background-color: #6988D6;
 }</string>
               </property>
               <property name="text">
@@ -1073,7 +1073,7 @@ QPushButton::menu-button{border: none;}</string>
 }
 
 QPushButton:hover {
-	background-color: #5C5C74;
+	background-color: #6988D6;
 }</string>
             </property>
             <property name="text">
