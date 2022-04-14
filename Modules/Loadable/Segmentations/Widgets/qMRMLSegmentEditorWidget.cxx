@@ -1716,7 +1716,7 @@ void qMRMLSegmentEditorWidget::updateEffectsSectionFromMRML()
   // Disable effect selection and options altogether if no master volume is selected
   bool effectsOverallEnabled = (d->ParameterSetNode->GetMasterVolumeNode() != nullptr) && (!d->Locked);
   d->EffectsGroupBox->setEnabled(effectsOverallEnabled);
-  d->OptionsGroupBox->setEnabled(effectsOverallEnabled);
+  //d->OptionsGroupBox->setEnabled(effectsOverallEnabled);
 
   // Enable only non-per-segment effects if no segment is selected, otherwise enable all effects
   if (effectsOverallEnabled)
@@ -1774,7 +1774,7 @@ void qMRMLSegmentEditorWidget::updateEffectsSectionFromMRML()
 
     // Activate newly selected effect
     activeEffect->activate();
-    d->OptionsGroupBox->show();
+    //d->OptionsGroupBox->show();
     //d->OptionsGroupBox->setTitle(activeEffect->name());
     d->EffectHelpBrowser->setCollapsibleText(activeEffect->helpText());
     d->MaskingGroupBox->show();
@@ -2238,7 +2238,7 @@ void qMRMLSegmentEditorWidget::onEffectButtonClicked(QAbstractButton* button)
   }
   else
   {
-      d->OptionsGroupBox->show();
+     // d->OptionsGroupBox->show();
   }
   d->OptionsGroupBox->setTitle("");
   d->EffectsOptionsFrame->repaint();
@@ -3601,7 +3601,7 @@ void qMRMLSegmentEditorWidget::updateEffectLayouts()
   else
     {
     d->OptionsGroupBox->setMinimumHeight(d->OptionsGroupBox->sizeHint().height());
-    d->OptionsGroupBox->layout()->activate();
+    //d->OptionsGroupBox->layout()->activate();
     }
 
   this->setMinimumHeight(this->sizeHint().height());
